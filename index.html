@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TenderAI Maroc</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0D3B6E;--a:#C8922A;--g:#0F6E56;--r:#A32D2D;--s:#F7F6F3;--b:rgba(13,59,110,0.15);--t:#0D1B2A;--t2:#4A5568;--t3:#8A9BB0;--w:#fff;--sw:230px;--fn:"DM Sans",sans-serif;--rd:10px;--rdl:16px;--sh:0 2px 12px rgba(13,59,110,0.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fn);background:var(--s);color:var(--t);min-height:100vh;display:flex;font-size:14px}
+.sb{width:var(--sw);background:var(--p);min-height:100vh;position:fixed;left:0;top:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.sb-logo{padding:18px 14px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:9px}
+.sb-ic{width:34px;height:34px;background:var(--a);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;font-weight:700;flex-shrink:0}
+.sb-nm{color:#fff;font-size:13px;font-weight:600}
+.sb-sb{color:rgba(255,255,255,.5);font-size:10px}
+.sb-nav{flex:1;padding:10px 6px}
+.ns{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 8px 3px}
+.ni{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;color:rgba(255,255,255,.7);font-size:12px;cursor:pointer;transition:all .15s;border:none;background:none;width:100%;text-align:left;font-family:var(--fn)}
+.ni:hover{background:rgba(255,255,255,.08);color:#fff}
+.ni.on{background:rgba(200,146,42,.3);color:#fff}
+.sb-ft{padding:10px;border-top:1px solid rgba(255,255,255,.1)}
+.up{display:flex;align-items:center;gap:7px;padding:7px;border-radius:7px;background:rgba(255,255,255,.07)}
+.ua{width:26px;height:26px;border-radius:50%;background:var(--a);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.un{color:rgba(255,255,255,.85);font-size:11px;font-weight:500}
+.ur{color:rgba(255,255,255,.4);font-size:10px}
+.mn{margin-left:var(--sw);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.tb{background:#fff;border-bottom:1px solid var(--b);padding:0 22px;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.tb-t{font-size:15px;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:none;font-family:var(--fn);transition:all .15s}
+.bp{background:var(--p);color:#fff}.bp:hover{background:#1557A0}
+.ba{background:var(--a);color:#fff}.ba:hover{background:#b07d1f}
+.bg{background:transparent;color:var(--t2);border:1px solid rgba(13,59,110,.2)}.bg:hover{background:var(--s)}
+.bg2{background:var(--g);color:#fff}
+.sm{padding:4px 9px;font-size:11px}
+.ct{padding:22px;flex:1}
+.pg{display:none}.pg.on{display:block}
+.card{background:#fff;border-radius:var(--rdl);border:1px solid var(--b);box-shadow:var(--sh);overflow:hidden;margin-bottom:12px}
+.ch{padding:13px 16px;border-bottom:1px solid var(--b);display:flex;align-items:center;justify-content:space-between}
+.ct2{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
+.cb{padding:14px 16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.full{grid-column:1/-1}
+.kpi{background:#fff;border-radius:var(--rdl);padding:14px 16px;border:1px solid var(--b);box-shadow:var(--sh)}
+.kl{font-size:10px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.kv{font-size:22px;font-weight:700}
+.ks{font-size:11px;color:var(--t3);margin-top:3px}
+.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.fl{font-size:10px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.05em}
+.fi{padding:7px 10px;border:1px solid rgba(13,59,110,.2);border-radius:7px;font-size:12px;font-family:var(--fn);color:var(--t);background:#fff;outline:none;transition:border .15s;width:100%}
+.fi:focus{border-color:var(--p)}
+textarea.fi{resize:vertical;min-height:70px}
+.tabs{display:flex;gap:3px;background:var(--s);padding:3px;border-radius:var(--rd);width:fit-content;margin-bottom:14px}
+.tab{padding:6px 13px;border-radius:6px;font-size:11px;font-weight:500;cursor:pointer;color:var(--t2);transition:all .15s}
+.tab.on{background:#fff;color:var(--p);box-shadow:var(--sh)}
+.tc{display:none}.tc.on{display:block}
+.aio{background:var(--s);border:1px solid var(--b);border-radius:var(--rd);padding:11px 13px;font-size:12px;line-height:1.8;min-height:80px;white-space:pre-wrap;font-family:var(--fn);color:var(--t)}
+.aio.ty::after{content:"▌";animation:blink .7s infinite;color:var(--p)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.rw{position:relative;width:100px;height:100px}
+.rs{transform:rotate(-90deg)}
+.rb{fill:none;stroke:#EDECEA;stroke-width:8}
+.rf{fill:none;stroke:var(--a);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1s}
+.rt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.rv{font-size:24px;font-weight:700;line-height:1}
+.rl{font-size:9px;color:var(--t3)}
+.dz{border:2px dashed rgba(13,59,110,.25);border-radius:var(--rd);padding:20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--s)}
+.dz:hover,.dz.ov{border-color:var(--p);background:#EEF4FB}
+.fi2{display:flex;align-items:center;gap:7px;padding:6px 9px;background:#fff;border:1px solid var(--b);border-radius:7px;margin-bottom:5px}
+.fn2{flex:1;font-size:11px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fs{font-size:10px;color:var(--t3)}
+.pi{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--b)}
+.pi:last-child{border:none}
+.pd{width:7px;height:7px;border-radius:50%;background:var(--g);flex-shrink:0}
+.pn{flex:1;min-width:0}
+.pname{font-size:11px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pm{font-size:10px;color:var(--t3)}
+.pr{text-align:right;flex-shrink:0}
+.pa{font-size:11px;font-weight:600}
+.bdg{font-size:10px;padding:2px 6px;border-radius:20px;font-weight:500}
+.bg3{background:#E1F5EE;color:#0F6E56}
+.bb{background:#E6F1FB;color:#185FA5}
+.bo{background:#FEF3CD;color:#854F0B}
+.dlv{background:#fff;border:1px solid var(--b);border-radius:var(--rdl);padding:13px 14px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:5px}
+.dlv:hover{border-color:var(--a)}
+.di{font-size:18px}
+.dt{font-size:12px;font-weight:600}
+.dd{font-size:10px;color:var(--t3);line-height:1.5;flex:1}
+.df{display:flex;align-items:center;justify-content:space-between;gap:5px;margin-top:3px;flex-wrap:wrap}
+.mo{display:none;position:fixed;inset:0;background:rgba(13,27,42,.5);z-index:200;align-items:center;justify-content:center}
+.mo.on{display:flex}
+.md{background:#fff;border-radius:var(--rdl);width:580px;max-width:95vw;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.mh{padding:14px 18px;background:var(--p);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.mt{font-size:13px;font-weight:600;color:#fff}
+.mc{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center}
+.mb{padding:18px;overflow-y:auto;flex:1}
+.mf{padding:10px 18px;border-top:1px solid var(--b);display:flex;justify-content:flex-end;gap:7px;flex-shrink:0;flex-wrap:wrap}
+.pw{background:#EDECEA;border-radius:100px;height:4px;margin-bottom:10px}
+.pb{height:4px;border-radius:100px;background:var(--a);transition:width .4s}
+.nt{position:fixed;bottom:18px;right:18px;background:var(--t);color:#fff;padding:9px 14px;border-radius:var(--rd);font-size:12px;font-weight:500;box-shadow:0 4px 20px rgba(0,0,0,.15);transform:translateY(70px);opacity:0;transition:all .3s;z-index:999}
+.nt.on{transform:translateY(0);opacity:1}
+.nt.ok{background:var(--g)}.nt.wn{background:var(--a)}.nt.er{background:var(--r)}
+.ld{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sh2{margin-bottom:16px}
+.sh2-t{font-size:18px;font-weight:700}
+.sh2-s{font-size:12px;color:var(--t3);margin-top:2px}
+.em{text-align:center;padding:30px 16px;color:var(--t3)}
+.ei{font-size:32px;margin-bottom:7px}
+@media(max-width:800px){.sb{transform:translateX(-100%)}.sb.op{transform:translateX(0)}.mn{margin-left:0}.g2,.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:rgba(13,59,110,.2);border-radius:10px}
+</style>
+</head>
+<body>
+
+<aside class="sb" id="sb">
+  <div class="sb-logo">
+    <div class="sb-ic">T</div>
+    <div><div class="sb-nm">TenderAI Maroc</div><div class="sb-sb">Plateforme AO IA</div></div>
+  </div>
+  <nav class="sb-nav">
+    <div class="ns">Principal</div>
+    <button class="ni on" id="ni-dashboard" onclick="nav('dashboard')">📊 Tableau de bord</button>
+    <button class="ni" id="ni-analyse" onclick="nav('analyse')">🔍 Analyser un AO</button>
+    <div class="ns">Rédaction</div>
+    <button class="ni" id="ni-technique" onclick="nav('technique')">📝 Offre Technique</button>
+    <button class="ni" id="ni-financiere" onclick="nav('financiere')">💰 Offre Financière</button>
+    <button class="ni" id="ni-admin" onclick="nav('admin')">📋 Dossier Administratif</button>
+    <div class="ns">Génération</div>
+    <button class="ni" id="ni-livrables" onclick="nav('livrables')">📁 Livrables</button>
+    <button class="ni" id="ni-modeles" onclick="nav('modeles')">📚 Modèles</button>
+    <button class="ni" id="ni-brand" onclick="nav('brand')">🎨 Brand Studio</button>
+    <div class="ns">Suivi</div>
+    <button class="ni" id="ni-pipeline" onclick="nav('pipeline')">📈 Pipeline AO</button>
+    <button class="ni" id="ni-settings" onclick="nav('settings')">⚙️ Paramètres</button>
+  </nav>
+  <div class="sb-ft">
+    <div class="up">
+      <div class="ua" id="ua">M</div>
+      <div><div class="un" id="un">Mon Entreprise</div><div class="ur">Administrateur</div></div>
+    </div>
+  </div>
+</aside>
+
+<main class="mn">
+  <header class="tb">
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="btn bg sm" onclick="document.getElementById('sb').classList.toggle('op')">☰</button>
+      <span class="tb-t" id="pt">Tableau de bord</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="bdg bb">🇲🇦 Maroc</span>
+      <div id="ao-actif-banner" style="display:none;background:#E1F5EE;border:1px solid #0F6E56;border-radius:7px;padding:4px 10px;font-size:11px;color:#0F6E56;display:flex;align-items:center;gap:6px">
+        <span>🎯 AO actif :</span><strong id="ao-actif-titre" style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></strong>
+        <button onclick="clearAO()" style="background:none;border:none;color:#0F6E56;cursor:pointer;font-size:13px;padding:0 2px" title="Effacer l'AO actif">✕</button>
+      </div>
+      <button class="btn ba" onclick="nav('analyse')">+ Nouvel AO</button>
+    </div>
+  </header>
+  <div class="ct">
+
+  <!-- DASHBOARD -->
+  <div class="pg on" id="pg-dashboard">
+    <div class="sh2"><div class="sh2-t">👋 Tableau de bord</div><div class="sh2-s">Vue d'ensemble de votre activité</div></div>
+    <div class="g4" style="margin-bottom:14px">
+      <div class="kpi"><div class="kl">📄 AO Analysés</div><div class="kv" id="kpi-ao">0</div><div class="ks">Prêt à démarrer</div></div>
+      <div class="kpi"><div class="kl">📤 Soumis</div><div class="kv">0</div><div class="ks">Aucun encore</div></div>
+      <div class="kpi"><div class="kl">🏆 Gagnés</div><div class="kv">0</div><div class="ks">Win rate: —</div></div>
+      <div class="kpi"><div class="kl">💰 CA Potentiel</div><div class="kv">0 MAD</div><div class="ks">Pipeline vide</div></div>
+    </div>
+    <div class="g2">
+      <div>
+        <div class="card"><div class="ch"><div class="ct2">⚡ Modules</div></div><div class="cb"><div class="g3">
+          <div style="background:var(--s);border-radius:var(--rd);padding:10px;cursor:pointer;text-align:center" onclick="nav('analyse')"><div style="font-size:20px;margin-bottom:5px">🔍</div><div style="font-size:11px;font-weight:600">Analyser AO</div><div style="font-size:9px;color:var(--t3)">IA</div></div>
+          <div style="background:var(--s);border-radius:var(--rd);padding:10px;cursor:pointer;text-align:center" onclick="nav('technique')"><div style="font-size:20px;margin-bottom:5px">📝</div><div style="font-size:11px;font-weight:600">Offre Tech.</div><div style="font-size:9px;color:var(--t3)">IA</div></div>
+          <div style="background:var(--s);border-radius:var(--rd);padding:10px;cursor:pointer;text-align:center" onclick="nav('financiere')"><div style="font-size:20px;margin-bottom:5px">💰</div><div style="font-size:11px;font-weight:600">Offre Fin.</div><div style="font-size:9px;color:var(--t3)">IA</div></div>
+          <div style="background:var(--s);border-radius:var(--rd);padding:10px;cursor:pointer;text-align:center" onclick="nav('admin')"><div style="font-size:20px;margin-bottom:5px">📋</div><div style="font-size:11px;font-weight:600">Dossier Admin</div><div style="font-size:9px;color:var(--t3)">Auto</div></div>
+          <div style="background:var(--s);border-radius:var(--rd);padding:10px;cursor:pointer;text-align:center" onclick="nav('livrables')"><div style="font-size:20px;margin-bottom:5px">📁</div><div style="font-size:11px;font-weight:600">Livrables</div><div style="font-size:9px;color:var(--t3)">PDF/Excel</div></div>
+          <div style="background:var(--s);border-radius:var(--rd);padding:10px;cursor:pointer;text-align:center" onclick="nav('brand')"><div style="font-size:20px;margin-bottom:5px">🎨</div><div style="font-size:11px;font-weight:600">Brand Studio</div><div style="font-size:9px;color:var(--t3)">Logo</div></div>
+        </div></div></div>
+        <div class="card"><div class="ch"><div class="ct2">🚀 Démarrage rapide</div></div><div class="cb">
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="display:flex;align-items:center;gap:9px;padding:7px;background:var(--s);border-radius:7px"><div style="width:20px;height:20px;border-radius:50%;background:var(--p);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div><div style="font-size:11px;flex:1">Configurez votre profil dans <strong>Paramètres</strong></div><button class="btn bg sm" onclick="nav('settings')">→</button></div>
+            <div style="display:flex;align-items:center;gap:9px;padding:7px;background:var(--s);border-radius:7px"><div style="width:20px;height:20px;border-radius:50%;background:var(--p);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div><div style="font-size:11px;flex:1">Uploadez votre logo dans <strong>Brand Studio</strong></div><button class="btn bg sm" onclick="nav('brand')">→</button></div>
+            <div style="display:flex;align-items:center;gap:9px;padding:7px;background:#FEF3CD;border-radius:7px"><div style="width:20px;height:20px;border-radius:50%;background:var(--a);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div><div style="font-size:11px;flex:1">Importez et analysez votre premier AO</div><button class="btn ba sm" onclick="nav('analyse')">→</button></div>
+            <div style="display:flex;align-items:center;gap:9px;padding:7px;background:var(--s);border-radius:7px"><div style="width:20px;height:20px;border-radius:50%;background:var(--g);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div><div style="font-size:11px;flex:1">Générez vos livrables PDF et Excel</div><button class="btn bg2 sm" onclick="nav('livrables')">→</button></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="card"><div class="ch"><div class="ct2">📈 Pipeline AO</div><button class="btn bg sm" onclick="nav('analyse')">+ Ajouter</button></div><div class="cb" id="dash-pipe"><div class="em"><div class="ei">📂</div><div style="font-size:11px">Aucun AO encore.<br>Analysez votre premier AO !</div><br><button class="btn bp sm" onclick="nav('analyse')">Commencer →</button></div></div></div>
+    </div>
+  </div>
+
+  <!-- ANALYSE -->
+  <div class="pg" id="pg-analyse">
+    <div class="sh2"><div class="sh2-t">🔍 Analyser un Appel d'Offres</div><div class="sh2-s">Importez vos documents (CPS, RC, Avis, Annexes) ou collez le texte</div></div>
+    <div class="card">
+      <div class="ch"><div class="ct2">📂 Importer les documents AO</div><span class="bdg bb">PDF · Word · Images</span></div>
+      <div class="cb">
+        <div class="dz" id="dz" onclick="document.getElementById('aof').click()" ondragover="event.preventDefault();this.classList.add('ov')" ondragleave="this.classList.remove('ov')" ondrop="onDrop(event)">
+          <div style="font-size:28px;margin-bottom:7px">📁</div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:3px">Glissez-déposez vos documents ici</div>
+          <div style="font-size:11px;color:var(--t3);margin-bottom:10px">CPS · Règlement de Consultation · Avis · Annexes · Plans</div>
+          <button class="btn bp" onclick="event.stopPropagation();document.getElementById('aof').click()">📎 Choisir les fichiers</button>
+        </div>
+        <input type="file" id="aof" multiple accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.xls,.xlsx" style="display:none" onchange="onFiles(event)">
+        <div id="fb" style="display:none;margin-top:10px">
+          <div id="fl2"></div>
+          <div style="background:#EEF4FB;border-radius:var(--rd);padding:8px 11px;font-size:11px;color:var(--p);margin-top:7px">✅ <strong id="fc">0</strong> document(s) importé(s) — l'IA analysera tout le contenu</div>
+        </div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct2">📄 Informations de l'AO</div></div>
+        <div class="cb">
+          <div class="fg"><label class="fl">Intitulé *</label><input class="fi" id="ao-t" placeholder="Ex: Construction complexe sportif — Settat"></div>
+          <div class="g2">
+            <div class="fg"><label class="fl">Maître d'ouvrage</label><input class="fi" id="ao-m" placeholder="Ex: Commune de Settat"></div>
+            <div class="fg"><label class="fl">Référence</label><input class="fi" id="ao-r" placeholder="Ex: AO N° 12/2026"></div>
+            <div class="fg"><label class="fl">Type</label><select class="fi" id="ao-ty"><option>AO ouvert</option><option>AO restreint</option><option>Bon de commande</option><option>AO privé</option><option>Concours</option></select></div>
+            <div class="fg"><label class="fl">Budget (MAD)</label><input class="fi" id="ao-b" placeholder="Ex: 2 500 000"></div>
+            <div class="fg"><label class="fl">Date limite</label><input class="fi" type="date" id="ao-d"></div>
+            <div class="fg"><label class="fl">Secteur</label><select class="fi" id="ao-s"><option>BTP & Travaux publics</option><option>Informatique</option><option>Fournitures</option><option>Services</option><option>Formation</option><option>Santé</option><option>Énergie</option></select></div>
+          </div>
+          <div class="fg"><label class="fl">Texte complémentaire</label><textarea class="fi" id="ao-tx" rows="3" placeholder="Collez le texte du CPS/RC ou décrivez les exigences..."></textarea></div>
+          <div style="display:flex;gap:7px;margin-top:4px">
+            <button class="btn bp" onclick="analyser()" id="btn-an" style="flex:1;justify-content:center">🤖 Analyser avec l'IA</button>
+            <button class="btn ba" onclick="autoFill()" id="btn-af" title="Remplir automatiquement les champs depuis les documents importés">⚡ Auto-remplir</button>
+            <button class="btn bg" onclick="resetAO()">↺</button>
+          </div>
+          <div style="margin-top:7px;font-size:10px;color:var(--t3)">💡 Importez vos documents AO ci-dessus puis cliquez <strong>⚡ Auto-remplir</strong> pour remplir les champs automatiquement</div>
+        </div>
+      </div>
+      <div>
+        <div class="card" id="sc" style="display:none">
+          <div class="ch"><div class="ct2">⭐ Score</div><span class="bdg bb">IA</span></div>
+          <div class="cb" style="display:flex;flex-direction:column;align-items:center;padding:14px">
+            <div class="rw" style="margin-bottom:7px">
+              <svg class="rs" width="100" height="100" viewBox="0 0 100 100"><circle class="rb" cx="50" cy="50" r="42"/><circle class="rf" id="rc" cx="50" cy="50" r="42" stroke-dasharray="264" stroke-dashoffset="264"/></svg>
+              <div class="rt"><div class="rv" id="rv">—</div><div class="rl">/ 100</div></div>
+            </div>
+            <div style="font-size:12px;font-weight:600" id="sv">—</div>
+            <div style="font-size:10px;color:var(--t3);margin-top:2px;text-align:center" id="sr"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ch"><div class="ct2">🤖 Analyse IA</div><span id="ab" class="bdg bg3">Prêt</span></div>
+          <div class="cb"><div class="aio" id="ar" style="min-height:180px">L'analyse apparaîtra ici.
+
+Importez vos documents ou remplissez le formulaire, puis cliquez "Analyser avec l'IA".</div></div>
+        </div>
+        <div class="card" id="stc" style="display:none">
+          <div class="ch"><div class="ct2">✅ Prochaines étapes</div></div>
+          <div class="cb" id="stl"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFRE TECHNIQUE -->
+  <div class="pg" id="pg-technique">
+    <div class="sh2"><div class="sh2-t">📝 Offre Technique</div><div class="sh2-s">Rédaction assistée par IA</div></div>
+    <div class="tabs">
+      <div class="tab on" onclick="swt('t','me',this)">Méthodologie</div>
+      <div class="tab" onclick="swt('t','cv',this)">Équipe & CV</div>
+      <div class="tab" onclick="swt('t','pl',this)">Planning</div>
+      <div class="tab" onclick="swt('t','re',this)">Références</div>
+      <div class="tab" onclick="swt('t','mo',this)">Moyens</div>
+    </div>
+    <div id="t-me" class="tc on">
+      <div class="g2">
+        <div class="card"><div class="ch"><div class="ct2">📋 Paramètres</div></div><div class="cb">
+          <div class="fg"><label class="fl">Objet du marché *</label><input class="fi" id="te-o" placeholder="Ex: Construction complexe sportif"></div>
+          <div class="g2">
+            <div class="fg"><label class="fl">Délai</label><input class="fi" id="te-d" placeholder="Ex: 18 mois"></div>
+            <div class="fg"><label class="fl">Type</label><select class="fi" id="te-t"><option>Travaux construction</option><option>Fournitures</option><option>Services</option><option>Conseil</option><option>Formation</option><option>Informatique</option></select></div>
+          </div>
+          <div class="fg"><label class="fl">Spécificités techniques</label><textarea class="fi" id="te-s" rows="3" placeholder="Contraintes, normes, exigences qualité..."></textarea></div>
+          <div class="fg"><label class="fl">Points forts de votre entreprise</label><textarea class="fi" id="te-a" rows="3" placeholder="Expérience, certifications, références..."></textarea></div>
+          <button class="btn bp" onclick="genTech()" id="btn-te" style="width:100%;justify-content:center;margin-top:4px">🤖 Générer le mémoire technique</button>
+        </div></div>
+        <div class="card"><div class="ch"><div class="ct2">📄 Mémoire technique</div><div style="display:flex;gap:5px"><button class="btn bg sm" onclick="cp('te-o2')">📋</button><button class="btn bp sm" onclick="dlPDF('te-o2','Memoire-Technique')">📥 PDF</button></div></div><div class="cb"><div class="aio" id="te-o2" style="min-height:280px">Le mémoire technique apparaîtra ici.</div></div></div>
+      </div>
+    </div>
+    <div id="t-cv" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">👥 CV normalisé AO</div></div><div class="cb">
+        <div class="g2">
+          <div class="fg"><label class="fl">Nom & Prénom</label><input class="fi" id="cv-n" placeholder="Ex: Karim Bennani"></div>
+          <div class="fg"><label class="fl">Poste dans le projet</label><input class="fi" id="cv-p" placeholder="Ex: Chef de projet"></div>
+          <div class="fg"><label class="fl">Diplôme</label><input class="fi" id="cv-d" placeholder="Ex: Ingénieur Génie Civil"></div>
+          <div class="fg"><label class="fl">Années d'expérience</label><input class="fi" id="cv-e" placeholder="Ex: 15 ans"></div>
+          <div class="fg full"><label class="fl">Expériences & réalisations</label><textarea class="fi" id="cv-x" rows="4" placeholder="Projets similaires, responsabilités..."></textarea></div>
+        </div>
+        <div style="display:flex;gap:7px">
+          <button class="btn bp" onclick="genCV()" style="flex:1;justify-content:center">🤖 Générer CV normalisé</button>
+          <button class="btn bg sm" onclick="dlPDF('cv-o','CV-Normalise')">📥 PDF</button>
+        </div>
+        <div class="aio" id="cv-o" style="margin-top:10px;min-height:120px">Le CV apparaîtra ici.</div>
+      </div></div>
+    </div>
+    <div id="t-pl" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">📅 Planning Gantt</div></div><div class="cb">
+        <div class="g2">
+          <div class="fg"><label class="fl">Durée totale</label><input class="fi" id="pl-d" placeholder="Ex: 12 mois"></div>
+          <div class="fg"><label class="fl">Unité</label><select class="fi" id="pl-u"><option>Semaines</option><option>Mois</option><option>Jours</option></select></div>
+          <div class="fg full"><label class="fl">Tâches / Phases</label><textarea class="fi" id="pl-t" rows="4" placeholder="Ex: Installation, Terrassement, Fondations, Gros œuvre, VRD, Réception..."></textarea></div>
+        </div>
+        <button class="btn bp" onclick="genPlan()" style="width:100%;justify-content:center">🤖 Générer le planning</button>
+        <div style="display:flex;gap:7px;margin-top:7px">
+          <button class="btn bg2 sm" onclick="dlExcel('pl-o','Planning-Gantt','gantt')" style="flex:1;justify-content:center">📊 Télécharger Excel</button>
+          <button class="btn bg sm" onclick="dlPDF('pl-o','Planning-Gantt')" style="flex:1;justify-content:center">📥 Télécharger PDF</button>
+        </div>
+        <div class="aio" id="pl-o" style="margin-top:8px;min-height:120px">Le planning apparaîtra ici.</div>
+      </div></div>
+    </div>
+    <div id="t-re" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">🏅 Références similaires</div></div><div class="cb">
+        <div class="fg"><label class="fl">Décrivez vos références</label><textarea class="fi" id="re-i" rows="5" placeholder="1) Construction école — Mohammedia — 2022 — 3.2M MAD&#10;2) Réhab stade — Berrechid — 2023 — 1.8M MAD"></textarea></div>
+        <button class="btn bp" onclick="genRef()" style="width:100%;justify-content:center">🤖 Formater les références</button>
+        <div style="display:flex;gap:7px;margin-top:7px">
+          <button class="btn bg2 sm" onclick="dlExcel('re-o','References','ref')" style="flex:1;justify-content:center">📊 Excel</button>
+          <button class="btn bg sm" onclick="dlPDF('re-o','References-Similaires')" style="flex:1;justify-content:center">📥 PDF</button>
+        </div>
+        <div class="aio" id="re-o" style="margin-top:8px;min-height:120px">Les références apparaîtront ici.</div>
+      </div></div>
+    </div>
+    <div id="t-mo" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">🚜 Moyens matériels</div></div><div class="cb">
+        <div class="fg"><label class="fl">Listez vos équipements</label><textarea class="fi" id="mo-i" rows="5" placeholder="Ex: Pelle mécanique 25T (2), Camion-benne 10T (4)..."></textarea></div>
+        <button class="btn bp" onclick="genMoy()" style="width:100%;justify-content:center">🤖 Générer le tableau</button>
+        <div style="display:flex;gap:7px;margin-top:7px">
+          <button class="btn bg2 sm" onclick="dlExcel('mo-o','Moyens-Materiels','moy')" style="flex:1;justify-content:center">📊 Excel</button>
+          <button class="btn bg sm" onclick="dlPDF('mo-o','Moyens-Materiels')" style="flex:1;justify-content:center">📥 PDF</button>
+        </div>
+        <div class="aio" id="mo-o" style="margin-top:8px;min-height:120px">Le tableau apparaîtra ici.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- OFFRE FINANCIERE -->
+  <div class="pg" id="pg-financiere">
+    <div class="sh2"><div class="sh2-t">💰 Offre Financière</div><div class="sh2-s">BPU, DQE, Acte d'engagement</div></div>
+    <div class="g2">
+      <div class="card"><div class="ch"><div class="ct2">📊 Paramètres</div></div><div class="cb">
+        <div class="fg"><label class="fl">Objet du marché *</label><input class="fi" id="fi-o" placeholder="Ex: Fourniture mobilier scolaire"></div>
+        <div class="g2">
+          <div class="fg"><label class="fl">Budget (MAD HT)</label><input class="fi" id="fi-b" type="number" placeholder="2500000"></div>
+          <div class="fg"><label class="fl">TVA</label><select class="fi" id="fi-t"><option value="20">20%</option><option value="14">14%</option><option value="10">10%</option><option value="7">7%</option><option value="0">0% exonéré</option></select></div>
+          <div class="fg"><label class="fl">Marge cible (%)</label><input class="fi" id="fi-m" type="number" value="15"></div>
+          <div class="fg"><label class="fl">Stratégie</label><select class="fi" id="fi-s"><option>Compétitive</option><option>Équilibrée</option><option>Premium</option></select></div>
+        </div>
+        <div class="fg"><label class="fl">Postes de dépenses</label><textarea class="fi" id="fi-p" rows="4" placeholder="- Main d'oeuvre&#10;- Matériaux&#10;- Transport&#10;- Frais généraux"></textarea></div>
+        <button class="btn bp" onclick="genFin()" style="width:100%;justify-content:center;margin-top:4px">🤖 Générer l'offre financière</button>
+      </div></div>
+      <div class="card"><div class="ch"><div class="ct2">💵 BPU / DQE / Acte</div><div style="display:flex;gap:5px"><button class="btn bg2 sm" onclick="dlExcel('fi-o2','BPU-DQE','bpu')">📊 Excel</button><button class="btn bp sm" onclick="dlPDF('fi-o2','Offre-Financiere')">📥 PDF</button></div></div><div class="cb"><div class="aio" id="fi-o2" style="min-height:360px">BPU, DQE et acte d'engagement apparaîtront ici.</div></div></div>
+    </div>
+  </div>
+
+  <!-- DOSSIER ADMIN -->
+  <div class="pg" id="pg-admin">
+    <div class="sh2"><div class="sh2-t">📋 Dossier Administratif</div><div class="sh2-s">Checklist conforme réglementation marocaine</div></div>
+    <div class="g2">
+      <div class="card"><div class="ch"><div class="ct2">🗂️ Paramètres</div></div><div class="cb">
+        <div class="fg"><label class="fl">Type de soumissionnaire</label><select class="fi" id="ad-s"><option>SARL</option><option>SA</option><option>Personne physique</option><option>Groupement</option><option>Association</option></select></div>
+        <div class="fg"><label class="fl">Type de marché</label><select class="fi" id="ad-m"><option>AO public (État)</option><option>Collectivité territoriale</option><option>Bon de commande</option><option>Marché privé</option><option>Établissement public (ONEE, OCP...)</option></select></div>
+        <div class="fg"><label class="fl">Montant estimé (MAD)</label><input class="fi" id="ad-mo" placeholder="Ex: 500000"></div>
+        <div class="fg"><label class="fl">Informations complémentaires</label><textarea class="fi" id="ad-i" rows="3" placeholder="Certifications requises, exigences spécifiques..."></textarea></div>
+        <button class="btn bp" onclick="genAdmin()" style="width:100%;justify-content:center;margin-top:4px">🤖 Générer la checklist</button>
+      </div></div>
+      <div class="card"><div class="ch"><div class="ct2">✅ Checklist pièces requises</div><div style="display:flex;gap:5px"><button class="btn bg2 sm" onclick="dlExcel('ad-o','Checklist-Admin','check')">📊 Excel</button><button class="btn bp sm" onclick="dlPDF('ad-o','Checklist-Administrative')">📥 PDF</button></div></div><div class="cb"><div class="aio" id="ad-o" style="min-height:360px">La checklist apparaîtra ici avec toutes les pièces obligatoires.</div></div></div>
+    </div>
+  </div>
+
+  <!-- LIVRABLES -->
+  <div class="pg" id="pg-livrables">
+    <div class="sh2"><div class="sh2-t">📁 Livrables & Documents</div><div class="sh2-s">Générez et téléchargez en PDF ou Excel</div></div>
+    <div style="background:#EEF4FB;border-radius:var(--rd);padding:10px 13px;margin-bottom:14px;font-size:11px;color:var(--p)">💡 <strong>Comment ça marche :</strong> Cliquez "Générer" → l'IA crée le document → cliquez "📥 PDF" ou "📊 Excel" pour télécharger.</div>
+    <div class="g3">
+      <div class="dlv"><div class="di">📄</div><div class="dt">Page de garde</div><div class="dd">Couverture professionnelle avec logo, AO, MOA</div><div class="df"><span class="bdg bb">1 page</span><button class="btn bp sm" onclick="openLiv('Page de garde')">Générer</button></div></div>
+      <div class="dlv"><div class="di">📝</div><div class="dt">Mémoire technique</div><div class="dd">Méthodologie, organisation, qualité, HSE</div><div class="df"><span class="bdg bb">15-30 p.</span><button class="btn bp sm" onclick="openLiv('Mémoire technique complet')">Générer</button></div></div>
+      <div class="dlv"><div class="di">📅</div><div class="dt">Planning Gantt</div><div class="dd">Diagramme avec jalons et chemin critique</div><div class="df"><span class="bdg bb">2-4 p.</span><button class="btn bp sm" onclick="openLiv('Planning exécution Gantt')">Générer</button></div></div>
+      <div class="dlv"><div class="di">👥</div><div class="dt">CVs équipe</div><div class="dd">CVs normalisés format AO marocain</div><div class="df"><span class="bdg bb">1-2 p./CV</span><button class="btn bp sm" onclick="openLiv('CVs équipe normalisés AO')">Générer</button></div></div>
+      <div class="dlv"><div class="di">💰</div><div class="dt">BPU / DQE</div><div class="dd">Bordereau des Prix et Détail Quantitatif</div><div class="df"><span class="bdg bb">3-8 p.</span><button class="btn bp sm" onclick="openLiv('BPU et DQE')">Générer</button></div></div>
+      <div class="dlv"><div class="di">✍️</div><div class="dt">Acte d'engagement</div><div class="dd">Lettre de soumission conforme</div><div class="df"><span class="bdg bb">2 p.</span><button class="btn bp sm" onclick="openLiv('Acte engagement')">Générer</button></div></div>
+      <div class="dlv"><div class="di">🏅</div><div class="dt">Références</div><div class="dd">Tableau références avec attestations</div><div class="df"><span class="bdg bb">2-5 p.</span><button class="btn bp sm" onclick="openLiv('Références similaires')">Générer</button></div></div>
+      <div class="dlv"><div class="di">🚜</div><div class="dt">Moyens matériels</div><div class="dd">Inventaire équipements et ressources</div><div class="df"><span class="bdg bb">2-4 p.</span><button class="btn bp sm" onclick="openLiv('Moyens matériels humains')">Générer</button></div></div>
+      <div class="dlv" style="border-color:var(--a)"><div class="di">📦</div><div class="dt" style="color:var(--a)">Dossier complet</div><div class="dd">Tous les documents en un seul fichier</div><div class="df"><span class="bdg bo">Final</span><button class="btn ba sm" onclick="openLiv('Dossier complet AO')">Tout générer</button></div></div>
+    </div>
+  </div>
+
+
+  <!-- MODELES -->
+  <div class="pg" id="pg-modeles">
+    <div class="sh2"><div class="sh2-t">📚 Modèles & Instructions</div><div class="sh2-s">Définissez les modèles que l'IA suit pour générer vos documents — modifiez ou remplacez à tout moment</div></div>
+    <div style="background:#EEF4FB;border-radius:var(--rd);padding:10px 13px;margin-bottom:14px;font-size:11px;color:var(--p)">
+      💡 <strong>Comment ça marche :</strong> Importez vos vrais documents d'entreprise (Word, PDF, Excel) comme modèles de référence. L'IA les lira et les suivra pour générer vos dossiers. Vous pouvez aussi modifier les modèles texte directement.
+    </div>
+
+    <!-- IMPORT MODELES ENTREPRISE -->
+    <div class="card" style="margin-bottom:14px">
+      <div class="ch"><div class="ct2">📤 Importer les modèles de votre entreprise</div><span class="bdg bb">Word · PDF · Excel · Images</span></div>
+      <div class="cb">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px">
+          <div style="border:1px solid var(--b);border-radius:var(--rd);padding:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:5px">📝</div>
+            <div style="font-size:11px;font-weight:600;margin-bottom:3px">Mémoire technique</div>
+            <div style="font-size:10px;color:var(--t3);margin-bottom:7px">Votre modèle Word/PDF</div>
+            <button class="btn bg sm" onclick="document.getElementById('imp-tech').click()" style="width:100%;justify-content:center">📎 Importer</button>
+            <input type="file" id="imp-tech" accept=".pdf,.doc,.docx,.txt" style="display:none" onchange="importModele(event,'tech')">
+            <div id="imp-tech-name" style="font-size:10px;color:var(--g);margin-top:5px"></div>
+          </div>
+          <div style="border:1px solid var(--b);border-radius:var(--rd);padding:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:5px">💰</div>
+            <div style="font-size:11px;font-weight:600;margin-bottom:3px">Offre financière</div>
+            <div style="font-size:10px;color:var(--t3);margin-bottom:7px">Votre modèle BPU/DQE</div>
+            <button class="btn bg sm" onclick="document.getElementById('imp-fin').click()" style="width:100%;justify-content:center">📎 Importer</button>
+            <input type="file" id="imp-fin" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx,.csv" style="display:none" onchange="importModele(event,'fin')">
+            <div id="imp-fin-name" style="font-size:10px;color:var(--g);margin-top:5px"></div>
+          </div>
+          <div style="border:1px solid var(--b);border-radius:var(--rd);padding:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:5px">📋</div>
+            <div style="font-size:11px;font-weight:600;margin-bottom:3px">Dossier administratif</div>
+            <div style="font-size:10px;color:var(--t3);margin-bottom:7px">Votre checklist type</div>
+            <button class="btn bg sm" onclick="document.getElementById('imp-admin').click()" style="width:100%;justify-content:center">📎 Importer</button>
+            <input type="file" id="imp-admin" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx" style="display:none" onchange="importModele(event,'admin')">
+            <div id="imp-admin-name" style="font-size:10px;color:var(--g);margin-top:5px"></div>
+          </div>
+          <div style="border:1px solid var(--b);border-radius:var(--rd);padding:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:5px">👥</div>
+            <div style="font-size:11px;font-weight:600;margin-bottom:3px">CV normalisé</div>
+            <div style="font-size:10px;color:var(--t3);margin-bottom:7px">Votre modèle CV type</div>
+            <button class="btn bg sm" onclick="document.getElementById('imp-cv').click()" style="width:100%;justify-content:center">📎 Importer</button>
+            <input type="file" id="imp-cv" accept=".pdf,.doc,.docx,.txt" style="display:none" onchange="importModele(event,'cv')">
+            <div id="imp-cv-name" style="font-size:10px;color:var(--g);margin-top:5px"></div>
+          </div>
+          <div style="border:1px solid var(--b);border-radius:var(--rd);padding:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:5px">📅</div>
+            <div style="font-size:11px;font-weight:600;margin-bottom:3px">Planning type</div>
+            <div style="font-size:10px;color:var(--t3);margin-bottom:7px">Votre Gantt modèle</div>
+            <button class="btn bg sm" onclick="document.getElementById('imp-plan').click()" style="width:100%;justify-content:center">📎 Importer</button>
+            <input type="file" id="imp-plan" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx" style="display:none" onchange="importModele(event,'plan')">
+            <div id="imp-plan-name" style="font-size:10px;color:var(--g);margin-top:5px"></div>
+          </div>
+          <div style="border:1px solid var(--b);border-radius:var(--rd);padding:10px;text-align:center">
+            <div style="font-size:20px;margin-bottom:5px">🏅</div>
+            <div style="font-size:11px;font-weight:600;margin-bottom:3px">Références type</div>
+            <div style="font-size:10px;color:var(--t3);margin-bottom:7px">Votre tableau références</div>
+            <button class="btn bg sm" onclick="document.getElementById('imp-ref').click()" style="width:100%;justify-content:center">📎 Importer</button>
+            <input type="file" id="imp-ref" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx" style="display:none" onchange="importModele(event,'ref')">
+            <div id="imp-ref-name" style="font-size:10px;color:var(--g);margin-top:5px"></div>
+          </div>
+        </div>
+        <div style="background:#FEF3CD;border-radius:var(--rd);padding:9px 12px;font-size:11px;color:#854F0B">
+          ⚠️ <strong>Note :</strong> Pour les fichiers Word et PDF, le texte sera extrait automatiquement. L'IA utilisera votre document comme modèle de structure et de style pour générer vos offres.
+        </div>
+      </div>
+    </div>
+    <div class="tabs">
+      <div class="tab on" onclick="swm('m-tech',this)">📝 Offre Technique</div>
+      <div class="tab" onclick="swm('m-fin',this)">💰 Offre Financière</div>
+      <div class="tab" onclick="swm('m-admin',this)">📋 Dossier Admin</div>
+      <div class="tab" onclick="swm('m-cv',this)">👥 CV & Équipe</div>
+      <div class="tab" onclick="swm('m-plan',this)">📅 Planning</div>
+      <div class="tab" onclick="swm('m-ref',this)">🏅 Références</div>
+    </div>
+
+    <div id="m-tech" class="tc on">
+      <div class="card"><div class="ch"><div class="ct2">📝 Modèle — Mémoire Technique</div><div style="display:flex;gap:5px"><button class="btn bg sm" onclick="resetMod('tpl-tech')">↺ Réinitialiser</button><button class="btn bp sm" onclick="saveMod('tpl-tech')">💾 Sauvegarder</button></div></div>
+      <div class="cb">
+        <div style="font-size:11px;color:var(--t3);margin-bottom:8px">Ce modèle sera utilisé par l'IA comme structure de référence pour tous vos mémoires techniques.</div>
+        <textarea class="fi" id="tpl-tech" rows="20" style="font-family:monospace;font-size:11px"></textarea>
+      </div></div>
+    </div>
+
+    <div id="m-fin" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">💰 Modèle — Offre Financière (BPU/DQE)</div><div style="display:flex;gap:5px"><button class="btn bg sm" onclick="resetMod('tpl-fin')">↺ Réinitialiser</button><button class="btn bp sm" onclick="saveMod('tpl-fin')">💾 Sauvegarder</button></div></div>
+      <div class="cb">
+        <div style="font-size:11px;color:var(--t3);margin-bottom:8px">Structure du BPU, DQE et acte d'engagement que l'IA devra respecter.</div>
+        <textarea class="fi" id="tpl-fin" rows="20" style="font-family:monospace;font-size:11px"></textarea>
+      </div></div>
+    </div>
+
+    <div id="m-admin" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">📋 Modèle — Dossier Administratif</div><div style="display:flex;gap:5px"><button class="btn bg sm" onclick="resetMod('tpl-admin')">↺ Réinitialiser</button><button class="btn bp sm" onclick="saveMod('tpl-admin')">💾 Sauvegarder</button></div></div>
+      <div class="cb">
+        <div style="font-size:11px;color:var(--t3);margin-bottom:8px">Format de la checklist administrative que l'IA devra produire.</div>
+        <textarea class="fi" id="tpl-admin" rows="20" style="font-family:monospace;font-size:11px"></textarea>
+      </div></div>
+    </div>
+
+    <div id="m-cv" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">👥 Modèle — CV Normalisé AO</div><div style="display:flex;gap:5px"><button class="btn bg sm" onclick="resetMod('tpl-cv')">↺ Réinitialiser</button><button class="btn bp sm" onclick="saveMod('tpl-cv')">💾 Sauvegarder</button></div></div>
+      <div class="cb">
+        <div style="font-size:11px;color:var(--t3);margin-bottom:8px">Format du CV normalisé que l'IA devra respecter pour chaque membre de l'équipe.</div>
+        <textarea class="fi" id="tpl-cv" rows="20" style="font-family:monospace;font-size:11px"></textarea>
+      </div></div>
+    </div>
+
+    <div id="m-plan" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">📅 Modèle — Planning d'exécution</div><div style="display:flex;gap:5px"><button class="btn bg sm" onclick="resetMod('tpl-plan')">↺ Réinitialiser</button><button class="btn bp sm" onclick="saveMod('tpl-plan')">💾 Sauvegarder</button></div></div>
+      <div class="cb">
+        <div style="font-size:11px;color:var(--t3);margin-bottom:8px">Structure du planning Gantt et des jalons que l'IA devra produire.</div>
+        <textarea class="fi" id="tpl-plan" rows="20" style="font-family:monospace;font-size:11px"></textarea>
+      </div></div>
+    </div>
+
+    <div id="m-ref" class="tc">
+      <div class="card"><div class="ch"><div class="ct2">🏅 Modèle — Références similaires</div><div style="display:flex;gap:5px"><button class="btn bg sm" onclick="resetMod('tpl-ref')">↺ Réinitialiser</button><button class="btn bp sm" onclick="saveMod('tpl-ref')">💾 Sauvegarder</button></div></div>
+      <div class="cb">
+        <div style="font-size:11px;color:var(--t3);margin-bottom:8px">Format du tableau de références que l'IA devra respecter.</div>
+        <textarea class="fi" id="tpl-ref" rows="20" style="font-family:monospace;font-size:11px"></textarea>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- BRAND STUDIO -->
+  <div class="pg" id="pg-brand">
+    <div class="sh2"><div class="sh2-t">🎨 Brand Studio</div><div class="sh2-s">Personnalisez vos documents avec votre identité visuelle</div></div>
+    <div class="g2">
+      <div>
+        <div class="card"><div class="ch"><div class="ct2">🏢 Identité entreprise</div></div><div class="cb">
+          <div class="fg"><label class="fl">Raison sociale</label><input class="fi" id="br-n" placeholder="Ex: SETEC Ingénierie Maroc SARL" oninput="updPrev()"></div>
+          <div class="fg"><label class="fl">Slogan</label><input class="fi" id="br-s" placeholder="Ex: Excellence au service de vos projets" oninput="updPrev()"></div>
+          <div class="g2">
+            <div class="fg"><label class="fl">Ville</label><input class="fi" id="br-v" placeholder="Casablanca"></div>
+            <div class="fg"><label class="fl">Téléphone</label><input class="fi" id="br-t" placeholder="+212 5XX XXX XXX"></div>
+          </div>
+          <div class="fg"><label class="fl">Email</label><input class="fi" id="br-e" placeholder="contact@monentreprise.ma" oninput="updPrev()"></div>
+        </div></div>
+        <div class="card"><div class="ch"><div class="ct2">🖼️ Logo</div></div><div class="cb">
+          <div class="dz" onclick="document.getElementById('lf').click()" style="padding:14px">
+            <div style="font-size:22px;margin-bottom:5px">📤</div>
+            <div style="font-size:12px;font-weight:600">Cliquez pour uploader votre logo</div>
+            <div style="font-size:10px;color:var(--t3);margin-top:2px">PNG transparent recommandé</div>
+          </div>
+          <input type="file" id="lf" accept="image/*" style="display:none" onchange="upLogo(event)">
+          <div id="lp" style="height:55px;border:1px solid var(--b);border-radius:var(--rd);display:flex;align-items:center;justify-content:center;margin-top:7px;background:#fff"><span style="font-size:10px;color:var(--t3)">Aperçu logo</span></div>
+        </div></div>
+        <div class="card"><div class="ch"><div class="ct2">🎨 Couleurs</div></div><div class="cb">
+          <div class="fg"><label class="fl">Couleur principale</label>
+            <div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-top:4px">
+              <div style="width:22px;height:22px;border-radius:5px;background:#0D3B6E;cursor:pointer;border:2px solid #0D3B6E" onclick="setCP('#0D3B6E')"></div>
+              <div style="width:22px;height:22px;border-radius:5px;background:#0F6E56;cursor:pointer;border:2px solid transparent" onclick="setCP('#0F6E56')"></div>
+              <div style="width:22px;height:22px;border-radius:5px;background:#993C1D;cursor:pointer;border:2px solid transparent" onclick="setCP('#993C1D')"></div>
+              <div style="width:22px;height:22px;border-radius:5px;background:#534AB7;cursor:pointer;border:2px solid transparent" onclick="setCP('#534AB7')"></div>
+              <div style="width:22px;height:22px;border-radius:5px;background:#2C2C2A;cursor:pointer;border:2px solid transparent" onclick="setCP('#2C2C2A')"></div>
+              <input type="color" value="#0D3B6E" id="icp" oninput="setCP(this.value)" style="width:22px;height:22px;border:none;padding:0;cursor:pointer;border-radius:5px">
+              <span id="hcp" style="font-size:10px;color:var(--t2);font-family:monospace">#0D3B6E</span>
+            </div>
+          </div>
+          <div class="fg"><label class="fl">Couleur accent</label>
+            <div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-top:4px">
+              <div style="width:22px;height:22px;border-radius:5px;background:#C8922A;cursor:pointer;border:2px solid #C8922A" onclick="setCA('#C8922A')"></div>
+              <div style="width:22px;height:22px;border-radius:5px;background:#1D9E75;cursor:pointer;border:2px solid transparent" onclick="setCA('#1D9E75')"></div>
+              <div style="width:22px;height:22px;border-radius:5px;background:#D4537E;cursor:pointer;border:2px solid transparent" onclick="setCA('#D4537E')"></div>
+              <div style="width:22px;height:22px;border-radius:5px;background:#378ADD;cursor:pointer;border:2px solid transparent" onclick="setCA('#378ADD')"></div>
+              <input type="color" value="#C8922A" id="ica" oninput="setCA(this.value)" style="width:22px;height:22px;border:none;padding:0;cursor:pointer;border-radius:5px">
+              <span id="hca" style="font-size:10px;color:var(--t2);font-family:monospace">#C8922A</span>
+            </div>
+          </div>
+        </div></div>
+        <button class="btn bp" onclick="saveBrand()" style="width:100%;justify-content:center">💾 Sauvegarder la charte</button>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;margin-bottom:9px">👁️ Aperçu en temps réel</div>
+        <div style="background:#EDECEA;border-radius:var(--rdl);padding:10px">
+          <div style="background:#fff;border-radius:5px;border:1px solid var(--b);overflow:hidden;font-size:10px">
+            <div style="padding:9px 11px;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:6px">
+                <div id="prl" style="width:26px;height:26px;border-radius:5px;background:#0D3B6E;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:11px;flex-shrink:0">S</div>
+                <div><div style="font-size:10px;font-weight:600" id="prn">Mon Entreprise</div><div style="font-size:8px;color:var(--t3)" id="prs">Votre slogan</div></div>
+              </div>
+              <div style="font-size:7px;color:var(--t3);text-align:right"><div>AO-2026-001</div><div>18/05/2026</div></div>
+            </div>
+            <div id="prb" style="padding:8px 11px;background:#0D3B6E;color:#fff"><div style="font-size:10px;font-weight:600">AO ouvert N° 12/2026</div><div style="font-size:8px;opacity:.8;margin-top:2px">Construction — Province de Settat</div></div>
+            <div style="padding:8px 11px 5px">
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><div id="prba" style="width:3px;height:10px;border-radius:1px;background:#C8922A"></div><div style="font-size:8px;font-weight:600">Présentation</div></div>
+              <div style="display:flex;gap:5px">
+                <div style="flex:1;background:var(--s);border-radius:3px;padding:4px 5px"><div style="font-size:7px;color:var(--t3)">Raison sociale</div><div style="font-size:8px;font-weight:500" id="prc">Mon Entreprise</div></div>
+                <div style="flex:1;background:var(--s);border-radius:3px;padding:4px 5px"><div style="font-size:7px;color:var(--t3)">Forme</div><div style="font-size:8px;font-weight:500">SARL</div></div>
+              </div>
+            </div>
+            <div style="padding:6px 11px;border-top:1px solid var(--b);display:flex;justify-content:space-between;align-items:center">
+              <div style="font-size:7px;color:var(--t3)" id="prf">Mon Entreprise — contact@ma</div>
+              <div id="prfb" style="height:2px;width:35px;border-radius:1px;background:#0D3B6E"></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:10px;color:var(--t3);text-align:center">Cette mise en page s'applique à tous vos documents</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIPELINE -->
+  <div class="pg" id="pg-pipeline">
+    <div class="sh2"><div class="sh2-t">📈 Pipeline AO</div><div class="sh2-s">Suivi de tous vos appels d'offres</div></div>
+    <div class="card"><div class="ch"><div class="ct2">📊 Mes AO</div><button class="btn ba sm" onclick="nav('analyse')">+ Nouveau</button></div><div class="cb" id="pipe-b"><div class="em"><div class="ei">📭</div><div style="font-size:11px">Aucun AO dans le pipeline.<br>Analysez votre premier AO !</div><br><button class="btn bp sm" onclick="nav('analyse')">Analyser →</button></div></div></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="pg" id="pg-settings">
+    <div class="sh2"><div class="sh2-t">⚙️ Paramètres</div><div class="sh2-s">Configuration de votre compte et clé API</div></div>
+    <div class="g2">
+      <div class="card"><div class="ch"><div class="ct2">👤 Mon profil</div></div><div class="cb">
+        <div class="fg"><label class="fl">Nom de l'entreprise</label><input class="fi" id="se-n" placeholder="Mon Entreprise SARL" oninput="document.getElementById('un').textContent=this.value||'Mon Entreprise';document.getElementById('ua').textContent=(this.value||'M')[0].toUpperCase()"></div>
+        <div class="fg"><label class="fl">ICE</label><input class="fi" id="se-i" placeholder="001234567000089"></div>
+        <div class="fg"><label class="fl">Secteur</label><select class="fi"><option>BTP</option><option>Informatique</option><option>Consulting</option><option>Industrie</option><option>Commerce</option><option>Santé</option></select></div>
+        <div class="fg"><label class="fl">Adresse</label><textarea class="fi" id="se-a" rows="2" placeholder="Adresse complète"></textarea></div>
+        <button class="btn bp" onclick="saveProfil()" style="width:100%;justify-content:center">💾 Sauvegarder le profil</button>
+      </div></div>
+      <div class="card"><div class="ch"><div class="ct2">🤖 Clé API Anthropic</div></div><div class="cb">
+        <div style="background:#FEF3CD;border-radius:var(--rd);padding:9px 11px;margin-bottom:10px;font-size:11px;color:#854F0B"><strong>Important :</strong> Nécessaire pour que l'IA génère vos documents. Stockée dans votre navigateur uniquement.</div>
+        <div class="fg"><label class="fl">Clé API</label><input class="fi" id="ak" type="password" placeholder="sk-ant-api03-..."></div>
+        <div style="font-size:10px;color:var(--t3);margin-bottom:10px">Obtenez votre clé sur <strong style="color:var(--p)">console.anthropic.com</strong> → API Keys → Create Key</div>
+        <button class="btn bp" onclick="saveKey()" style="width:100%;justify-content:center">🔑 Sauvegarder la clé API</button>
+        <div style="margin-top:7px" id="ks"></div>
+      </div></div>
+      <div class="card full"><div class="ch"><div class="ct2">ℹ️ Guide rapide</div></div><div class="cb"><div class="g4">
+        <div style="font-size:11px"><strong style="display:block;margin-bottom:3px">🔍 Analyser un AO</strong>Importez CPS, RC, Avis, Annexes → analyse IA complète avec score.</div>
+        <div style="font-size:11px"><strong style="display:block;margin-bottom:3px">📝 Offre Technique</strong>Générez mémoire, CVs, planning, références, moyens.</div>
+        <div style="font-size:11px"><strong style="display:block;margin-bottom:3px">💰 Offre Financière</strong>BPU, DQE et acte d'engagement avec calcul TVA.</div>
+        <div style="font-size:11px"><strong style="display:block;margin-bottom:3px">📁 Livrables</strong>Téléchargez chaque document en PDF ou Excel.</div>
+      </div></div></div>
+    </div>
+  </div>
+
+  </div>
+</main>
+
+<!-- MODAL -->
+<div class="mo" id="modal">
+  <div class="md">
+    <div class="mh"><div class="mt" id="mod-t">Génération</div><button class="mc" onclick="closeMod()">✕</button></div>
+    <div class="mb"><div class="pw"><div class="pb" id="pb" style="width:0%"></div></div><div class="aio" id="mod-o" style="min-height:220px"></div></div>
+    <div class="mf">
+      <button class="btn bg" onclick="closeMod()">Fermer</button>
+      <button class="btn bg" onclick="cp('mod-o')">📋 Copier</button>
+      <button class="btn bg2" onclick="dlExcel('mod-o',curDoc,'auto')">📊 Excel</button>
+      <button class="btn bp" onclick="dlPDF('mod-o',curDoc)">📥 PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIF -->
+<div class="nt" id="nt"></div>
+
+<script>
+var KEY = localStorage.getItem('tk') || '';
+var PIPE = JSON.parse(localStorage.getItem('tp') || '[]');
+var CP2 = '#0D3B6E';
+var CA2 = '#C8922A';
+var FILES = [];
+var curDoc = 'document';
+
+// Load key on start
+if (KEY) {
+  document.getElementById('ak').value = KEY;
+  document.getElementById('ks').innerHTML = '<span style="color:#0F6E56;font-size:11px">✅ Clé API configurée</span>';
+}
+
+// NAVIGATION
+function nav(id) {
+  document.querySelectorAll('.pg').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('.ni').forEach(function(n) { n.classList.remove('on'); });
+  var pg = document.getElementById('pg-' + id);
+  if (pg) pg.classList.add('on');
+  var ni = document.getElementById('ni-' + id);
+  if (ni) ni.classList.add('on');
+  var titles = {dashboard:'Tableau de bord',analyse:'Analyser un AO',technique:'Offre Technique',financiere:'Offre Financière',admin:'Dossier Administratif',livrables:'Livrables',modeles:'Modèles & Instructions',brand:'Brand Studio',pipeline:'Pipeline AO',settings:'Paramètres'};
+  document.getElementById('pt').textContent = titles[id] || id;
+  window.scrollTo(0, 0);
+  document.getElementById('sb').classList.remove('op');
+}
+
+// TABS
+function swt(prefix, id, el) {
+  var tabs = document.querySelectorAll('#pg-technique .tc');
+  tabs.forEach(function(t) { t.classList.remove('on'); });
+  var allTabs = el.parentElement.querySelectorAll('.tab');
+  allTabs.forEach(function(t) { t.classList.remove('on'); });
+  var tc = document.getElementById(prefix + '-' + id);
+  if (tc) tc.classList.add('on');
+  el.classList.add('on');
+}
+
+// AI CALL
+function callAI(prompt, outEl, done) {
+  var k = KEY || localStorage.getItem('tk');
+  if (!k) {
+    outEl.textContent = '⚠️ Clé API non configurée.\n\nAllez dans ⚙️ Paramètres et entrez votre clé Anthropic (sk-ant-...)';
+    return;
+  }
+  outEl.textContent = '';
+  outEl.classList.add('ty');
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': k,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-5',
+      max_tokens: 2000,
+      messages: [{ role: 'user', content: prompt }]
+    })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    outEl.classList.remove('ty');
+    if (d.content && d.content[0]) {
+      outEl.textContent = d.content[0].text;
+      if (done) done(d.content[0].text);
+    } else {
+      outEl.textContent = '❌ Erreur: ' + (d.error ? d.error.message : JSON.stringify(d));
+    }
+  }).catch(function(e) {
+    outEl.classList.remove('ty');
+    outEl.textContent = '❌ Erreur connexion: ' + e.message;
+  });
+}
+
+// FILE IMPORT
+function onFiles(e) { addFiles(Array.from(e.target.files)); }
+function onDrop(e) {
+  e.preventDefault();
+  document.getElementById('dz').classList.remove('ov');
+  addFiles(Array.from(e.dataTransfer.files));
+}
+function addFiles(files) {
+  files.forEach(function(f) {
+    var ext = f.name.split('.').pop().toLowerCase();
+    var r = new FileReader();
+    if (['jpg','jpeg','png','gif'].indexOf(ext) >= 0) {
+      r.onload = function(ev) { FILES.push({name:f.name,type:'img',data:ev.target.result,size:f.size}); showFiles(); };
+      r.readAsDataURL(f);
+    } else {
+      r.onload = function(ev) { FILES.push({name:f.name,type:'txt',data:ev.target.result,size:f.size}); showFiles(); };
+      r.readAsText(f, 'UTF-8');
+    }
+  });
+}
+function showFiles() {
+  var box = document.getElementById('fb');
+  var list = document.getElementById('fl2');
+  if (!FILES.length) { box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  document.getElementById('fc').textContent = FILES.length;
+  list.innerHTML = FILES.map(function(f, i) {
+    var ic = f.name.endsWith('.pdf') ? '📕' : f.name.match(/\.docx?$/) ? '📘' : f.name.match(/\.(jpg|png)$/) ? '🖼️' : '📄';
+    return '<div class="fi2"><span style="font-size:15px">' + ic + '</span><span class="fn2">' + f.name + '</span><span class="fs">' + Math.round(f.size/1024) + ' Ko</span><button onclick="rmFile(' + i + ')" style="background:none;border:none;color:#A32D2D;cursor:pointer;font-size:13px;padding:0 3px">✕</button></div>';
+  }).join('');
+}
+function rmFile(i) { FILES.splice(i, 1); showFiles(); }
+function filesCtx() {
+  if (!FILES.length) return '';
+  var ctx = '\n\nDOCUMENTS IMPORTÉS:\n';
+  FILES.forEach(function(f) {
+    ctx += '\n--- ' + f.name + ' ---\n';
+    if (f.type === 'txt') ctx += f.data.slice(0, 4000);
+    else ctx += '[Image/document visuel]';
+    ctx += '\n';
+  });
+  return ctx;
+}
+
+// ANALYSER AO
+function analyser() {
+  var titre = document.getElementById('ao-t').value.trim();
+  if (!titre && !FILES.length) { notif('Renseignez l\'intitulé ou importez des documents', 'wn'); return; }
+  var btn = document.getElementById('btn-an');
+  btn.innerHTML = '<div class="ld"></div> Analyse...';
+  btn.disabled = true;
+  document.getElementById('ab').textContent = '🔄 En cours';
+  document.getElementById('sc').style.display = 'none';
+  document.getElementById('stc').style.display = 'none';
+  var prompt = 'Tu es expert en AO au Maroc (décret 2-12-349). Analyse cet appel d\'offres:\n' +
+    '- Intitulé: ' + (document.getElementById('ao-t').value || 'Extrait des documents') + '\n' +
+    '- MOA: ' + (document.getElementById('ao-m').value || 'N/A') + '\n' +
+    '- Référence: ' + (document.getElementById('ao-r').value || 'N/A') + '\n' +
+    '- Type: ' + document.getElementById('ao-ty').value + '\n' +
+    '- Secteur: ' + document.getElementById('ao-s').value + '\n' +
+    '- Budget: ' + (document.getElementById('ao-b').value ? document.getElementById('ao-b').value + ' MAD' : 'N/A') + '\n' +
+    '- Date limite: ' + (document.getElementById('ao-d').value || 'N/A') + '\n' +
+    '- Description: ' + (document.getElementById('ao-tx').value || 'Voir documents') + '\n' +
+    (FILES.length ? '- Fichiers importés: ' + FILES.length : '') + filesCtx() + '\n\n' +
+    'Analyse structurée:\n1. RÉSUMÉ EXÉCUTIF (4-5 lignes)\n2. SCORE DE PERTINENCE: SCORE: XX/100\n3. EXIGENCES CLÉS\n4. CRITÈRES DE NOTATION\n5. PIÈCES ADMINISTRATIVES REQUISES\n6. RISQUES\n7. RECOMMANDATIONS\n\nFrançais professionnel marchés publics marocains.';
+  callAI(prompt, document.getElementById('ar'), function(txt) {
+    var m = txt.match(/SCORE:\s*(\d+)/i);
+    if (m) showRing(parseInt(m[1]));
+    showSteps();
+    var titreAO = document.getElementById('ao-t').value || 'AO importé';
+    addPipe(titreAO, document.getElementById('ao-b').value, document.getElementById('ao-m').value);
+    // Set as active AO
+    setAOActif({
+      titre: titreAO,
+      moa: document.getElementById('ao-m').value,
+      ref: document.getElementById('ao-r').value,
+      type: document.getElementById('ao-ty').value,
+      budget: document.getElementById('ao-b').value,
+      secteur: document.getElementById('ao-s').value,
+      deadline: document.getElementById('ao-d').value,
+      description: document.getElementById('ao-tx').value,
+      analyse: document.getElementById('ar').textContent.slice(0,1000)
+    });
+    document.getElementById('ab').textContent = '✅ Terminé';
+    document.getElementById('ab').style.background = '#E1F5EE';
+    document.getElementById('ab').style.color = '#0F6E56';
+    notif('Analyse terminée ! AO ajouté au pipeline.', 'ok');
+    btn.innerHTML = '🤖 Analyser avec l\'IA';
+    btn.disabled = false;
+  });
+}
+function showRing(s) {
+  document.getElementById('sc').style.display = 'block';
+  document.getElementById('rv').textContent = s;
+  document.getElementById('rc').style.strokeDashoffset = 264 - (264 * s / 100);
+  document.getElementById('rc').style.stroke = s >= 70 ? '#1D9E75' : s >= 50 ? '#BA7517' : '#A32D2D';
+  document.getElementById('sv').textContent = s >= 70 ? '🟢 Excellent — Soumissionnez !' : s >= 50 ? '🟡 Bonne opportunité' : '🔴 À évaluer';
+  document.getElementById('sr').textContent = s >= 70 ? 'Très bonne adéquation' : s >= 50 ? 'Offre solide requise' : 'Analysez les risques';
+}
+function showSteps() {
+  document.getElementById('stc').style.display = 'block';
+  var steps = [
+    {ok:true, txt:'Analyse IA complétée'},
+    {ok:false, txt:'Préparer le dossier administratif'},
+    {ok:false, txt:'Rédiger l\'offre technique'},
+    {ok:false, txt:'Calculer l\'offre financière'},
+    {ok:false, txt:'Générer les livrables PDF/Excel'}
+  ];
+  document.getElementById('stl').innerHTML = steps.map(function(s) {
+    return '<div style="display:flex;align-items:center;gap:7px;padding:6px 9px;background:var(--s);border-radius:7px;margin-bottom:4px">' +
+      '<span style="font-size:12px">' + (s.ok ? '✅' : '⭕') + '</span>' +
+      '<span style="flex:1;font-size:11px">' + s.txt + '</span>' +
+      '<span style="font-size:10px;font-weight:500;color:' + (s.ok ? 'var(--g)' : 'var(--a)') + '">' + (s.ok ? 'Fait' : 'À faire') + '</span></div>';
+  }).join('');
+}
+function resetAO() {
+  ['ao-t','ao-m','ao-r','ao-b','ao-tx'].forEach(function(id) { var e = document.getElementById(id); if(e) e.value = ''; });
+  document.getElementById('ar').textContent = 'Formulaire réinitialisé.';
+  document.getElementById('sc').style.display = 'none';
+  document.getElementById('stc').style.display = 'none';
+  FILES = [];
+  document.getElementById('fb').style.display = 'none';
+}
+
+// PIPELINE
+function addPipe(titre, budget, moa) {
+  PIPE.push({titre:titre, budget:budget||'—', moa:moa||'—', date:new Date().toLocaleDateString('fr-MA')});
+  localStorage.setItem('tp', JSON.stringify(PIPE));
+  document.getElementById('kpi-ao').textContent = PIPE.length;
+  
+// ── MODELES ──
+var DEFAULT_TPLS = {
+  'tpl-tech': 'MODÈLE — MÉMOIRE TECHNIQUE\n==============================================\n\n1. PRÉSENTATION DE L\'ENTREPRISE\n--------------------------------\n[Nom de l\'entreprise] est une société spécialisée dans [domaine], créée en [année], avec [X] ans d\'expérience dans [secteur].\n- Forme juridique : [SARL/SA]\n- Capital social : [montant] MAD\n- Effectif : [nombre] collaborateurs\n- Certifications : [ISO 9001 / QUALIBAT / etc.]\n\n2. COMPRÉHENSION DU PROJET ET DE SES ENJEUX\n---------------------------------------------\nNotre analyse du cahier des prescriptions spéciales nous permet d\'identifier les enjeux majeurs suivants :\n- Enjeu technique : [description]\n- Enjeu délai : [description]\n- Enjeu qualité : [description]\n\n3. ORGANISATION ET MÉTHODOLOGIE D\'EXÉCUTION\n---------------------------------------------\nPhase 1 — Préparation et installation (Semaine 1-2)\n  • Installation du chantier et mise en place des équipements\n  • Réunion de lancement avec le maître d\'ouvrage\n  • Validation du planning détaillé\n\nPhase 2 — Exécution (Semaines 3 à [N])\n  • [Tâche 1] : [description et méthode]\n  • [Tâche 2] : [description et méthode]\n  • Contrôles qualité réguliers\n\nPhase 3 — Réception (Dernière semaine)\n  • Essais et tests de réception\n  • Levée des réserves\n  • Remise du dossier de récolement\n\n4. PLAN QUALITÉ ET CONTRÔLE\n-----------------------------\n- Responsable qualité : [Nom, diplôme, expérience]\n- Procédures de contrôle appliquées : [liste]\n- Normes respectées : NM, NF, ISO [références]\n- Fréquence des contrôles : [quotidien/hebdomadaire]\n\n5. HYGIÈNE, SÉCURITÉ ET ENVIRONNEMENT (HSE)\n---------------------------------------------\n- Plan HSE spécifique au chantier\n- Équipements de protection individuelle fournis\n- Formations sécurité de l\'équipe\n- Gestion des déchets et protection environnementale\n\n6. GESTION DES RISQUES\n------------------------\nRisque 1 : [description] → Mesure préventive : [action]\nRisque 2 : [description] → Mesure préventive : [action]\n\n7. VALEUR AJOUTÉE ET ENGAGEMENTS\n----------------------------------\n- Respect strict des délais contractuels\n- Garantie de [X] ans sur les ouvrages\n- Service après-vente disponible\n- Équipe dédiée et réactive',
+
+  'tpl-fin': 'MODÈLE — OFFRE FINANCIÈRE\n==============================================\n\nBORDEREAU DES PRIX UNITAIRES (BPU)\n------------------------------------\nN° | Désignation                    | Unité | Prix Unit. HT (MAD)\n---|--------------------------------|-------|--------------------\n1  | [Description poste 1]          | [U]   | [Prix]\n2  | [Description poste 2]          | [U]   | [Prix]\n3  | [Description poste 3]          | [Ml]  | [Prix]\n4  | Frais généraux et imprévus     | Fft   | [Prix]\n\nDÉTAIL QUANTITATIF ESTIMATIF (DQE)\n------------------------------------\nN° | Désignation          | Unité | Quantité | Prix U. HT | Montant HT\n---|----------------------|-------|----------|------------|----------\n1  | [Poste 1]            | [U]   | [Qté]    | [Prix]     | [Total]\n2  | [Poste 2]            | [U]   | [Qté]    | [Prix]     | [Total]\n                                              SOUS-TOTAL  | [Montant]\n\nRÉCAPITULATIF GÉNÉRAL\n----------------------\nMontant Total HT         : [Montant] MAD\nTVA [X]%                 : [Montant] MAD\nMontant Total TTC        : [Montant] MAD\n\nACTE D\'ENGAGEMENT\n------------------\nJe soussigné(e), [Nom Prénom], agissant en qualité de [fonction] de la société [Raison sociale],\nm\'engage à exécuter les prestations objet du marché N° [référence] pour un montant de :\n\nMontant HT  : [montant en chiffres] MAD ([montant en lettres])\nTVA [X]%    : [montant] MAD\nMontant TTC : [montant en chiffres] MAD ([montant en lettres])\n\nDélai d\'exécution : [X] mois/jours calendaires\nValidité de l\'offre : 75 jours à compter de la date de remise des plis\n\nFait à [Ville], le [Date]\nSignature et cachet :',
+
+  'tpl-admin': 'MODÈLE — CHECKLIST DOSSIER ADMINISTRATIF\n==============================================\nConforme au Décret n° 2-12-349 du 20 mars 2013\n\nA. PIÈCES LÉGALES OBLIGATOIRES\n--------------------------------\n☐ 1. Déclaration sur l\'honneur (modèle annexé au RC) — Original signé et cacheté\n☐ 2. Copie statuts de la société — Certifiée conforme\n☐ 3. Registre de commerce — Original récent (moins de 3 mois)\n☐ 4. Patente en cours de validité — Original ou copie certifiée\n☐ 5. Carte d\'identité nationale ou passeport du signataire\n\nB. ATTESTATIONS FISCALES ET SOCIALES\n--------------------------------------\n☐ 6. Attestation fiscale (Direction des Impôts) — moins de 1 an\n☐ 7. Attestation CNSS — moins de 1 an\n☐ 8. Attestation de l\'Administration fiscale (TVA) — moins de 1 an\n\nC. CAPACITÉS FINANCIÈRES\n--------------------------\n☐ 9. Bilans des 3 dernières années certifiés par un expert comptable\n☐ 10. Chiffre d\'affaires annuel moyen (3 ans)\n☐ 11. Attestation bancaire de bonne tenue de compte\n\nD. CAPACITÉS TECHNIQUES\n--------------------------\n☐ 12. Liste des références similaires avec attestations de bonne fin\n☐ 13. CV du personnel d\'encadrement clé\n☐ 14. Liste des moyens matériels disponibles\n☐ 15. Certificats de qualité / agréments le cas échéant\n\nE. CAUTION PROVISOIRE\n----------------------\n☐ 16. Caution provisoire bancaire ou chèque certifié\n    Montant : [X]% du budget estimé\n    Établissement bancaire agréé au Maroc\n\nF. DOCUMENTS SPÉCIFIQUES AU MARCHÉ\n------------------------------------\n☐ 17. [Document spécifique mentionné dans le RC]\n☐ 18. [Agrément technique spécifique au secteur]',
+
+  'tpl-cv': 'MODÈLE — CV NORMALISÉ APPEL D\'OFFRES\n==============================================\n\nINFORMATIONS PERSONNELLES\n--------------------------\nNom & Prénom    : [NOM Prénom]\nDate naissance  : [JJ/MM/AAAA]\nNationalité     : Marocaine\nSituation       : [Salarié / Associé / Gérant]\n\nFORMATION\n----------\n[Année] — [Diplôme] — [École/Université]\n[Année] — [Diplôme complémentaire] — [Établissement]\n\nEXPÉRIENCE PROFESSIONNELLE\n----------------------------\n[Année-Année] — [Poste] — [Entreprise]\n  • [Responsabilité 1]\n  • [Responsabilité 2]\n  • Réalisations : [projet 1], [projet 2]\n\n[Année-Année] — [Poste] — [Entreprise]\n  • [Responsabilité 1]\n  • Réalisations : [projet]\n\nPROJETS SIMILAIRES RÉALISÉS\n------------------------------\nN° | Projet                    | MOA              | Année | Montant MAD | Rôle\n---|---------------------------|------------------|-------|-------------|------\n1  | [Titre projet]            | [Maître ouvrage] | [An]  | [Montant]   | [Rôle]\n2  | [Titre projet]            | [Maître ouvrage] | [An]  | [Montant]   | [Rôle]\n\nCOMPÉTENCES CLÉS\n-----------------\nTechniques    : [liste compétences]\nLogiciels     : [liste logiciels]\nLangues       : Arabe (natif), Français (courant), Anglais (professionnel)\n\nCERTIFICATIONS\n---------------\n• [Certification 1] — [Organisme] — [Année]\n• [Certification 2] — [Organisme] — [Année]',
+
+  'tpl-plan': 'MODÈLE — PLANNING D\'EXÉCUTION\n==============================================\n\nDIAGRAMME DE GANTT\n-------------------\nTâche                        | S1 | S2 | S3 | S4 | S5 | S6 | ... | SN | Responsable\n-----------------------------|----|----|----|----|----|----|-----|----|------------\n1. Installation chantier     | ██ |    |    |    |    |    |     |    | Chef chantier\n2. Études et plans d\'exéc.   | ██ | ██ |    |    |    |    |     |    | Ingénieur\n3. Approvisionnements        |    | ██ | ██ |    |    |    |     |    | Resp. achats\n4. [Phase principale 1]      |    |    | ██ | ██ | ██ |    |     |    | [Responsable]\n5. [Phase principale 2]      |    |    |    |    | ██ | ██ |     |    | [Responsable]\n6. Contrôles qualité         |    |    | ██ |    | ██ |    |     | ██ | Resp. qualité\n7. Essais et réceptions      |    |    |    |    |    |    |     | ██ | Chef projet\n8. Levée réserves & clôture  |    |    |    |    |    |    |     | ██ | Chef projet\n\nJALONS IMPORTANTS\n------------------\n★ Semaine 1  : Ordre de service — Démarrage officiel\n★ Semaine [X]: Fin approvisionnements — Début travaux\n★ Semaine [X]: Réception provisoire\n★ Semaine [N]: Réception définitive\n\nRESSOURCES PAR PHASE\n---------------------\nPhase     | Effectif | Matériel principal      | Durée\n----------|----------|-------------------------|-------\n[Phase 1] | [N] pers | [Équipement]            | [X] sem\n[Phase 2] | [N] pers | [Équipement]            | [X] sem',
+
+  'tpl-ref': 'MODÈLE — RÉFÉRENCES SIMILAIRES\n==============================================\n\nTABLEAU DES RÉFÉRENCES\n-----------------------\nN° | Intitulé du marché          | Maître d\'ouvrage    | Année | Montant MAD  | Description\n---|------------------------------|---------------------|-------|--------------|------------------\n1  | [Titre projet 1]            | [MOA 1]             | [An]  | [Montant]    | [Brève description]\n2  | [Titre projet 2]            | [MOA 2]             | [An]  | [Montant]    | [Brève description]\n3  | [Titre projet 3]            | [MOA 3]             | [An]  | [Montant]    | [Brève description]\n\nDÉTAIL DES RÉFÉRENCES\n----------------------\nRÉFÉRENCE N°1\nIntitulé     : [Titre complet du marché]\nMaître d\'ouvrage : [Nom et adresse]\nNature des travaux/services : [Description détaillée]\nMontant du marché : [Montant] MAD HT\nDate de démarrage : [Date]\nDate de réception : [Date]\nAttestation de bonne fin : Oui — Délivrée par [MOA] le [Date]\nContact de référence : [Nom, Téléphone, Email]\n\nRÉFÉRENCE N°2\n[Même structure...]\n\nCHIFFRE D\'AFFAIRES DES 3 DERNIÈRES ANNÉES\n-------------------------------------------\nAnnée [N-2] : [Montant] MAD\nAnnée [N-1] : [Montant] MAD\nAnnée [N]   : [Montant] MAD\nMoyenne     : [Montant] MAD'
+};
+
+function swm(id, el) {
+  document.querySelectorAll('#pg-modeles .tc').forEach(function(t){t.classList.remove('on');});
+  el.parentElement.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+}
+
+
+
+
+
+
+
+
+
+// Init modeles on load
+loadModeles();
+
+
+// ── IMPORT MODELES ENTREPRISE ──
+function importModele(e, type) {
+  var f = e.target.files[0];
+  if (!f) return;
+  var nameEl = document.getElementById('imp-' + type + '-name');
+  var tplEl = document.getElementById('tpl-' + type);
+  var r = new FileReader();
+  r.onload = function(ev) {
+    var content = ev.target.result;
+    // Save imported content as template
+    localStorage.setItem('tai_tpl-' + type, content);
+    if (tplEl) tplEl.value = content;
+    if (nameEl) nameEl.textContent = '✅ ' + f.name;
+    notif('Modèle "' + f.name + '" importé avec succès !', 'ok');
+  };
+  r.readAsText(f, 'UTF-8');
+}
+
+// ── AUTO-FILL depuis documents AO importés ──
+function autoFill() {
+  if (!FILES.length) {
+    notif('Importez d\'abord les documents AO (CPS, RC, Avis...)', 'wn');
+    return;
+  }
+  var btn = document.getElementById('btn-af');
+  btn.innerHTML = '<div class="ld"></div>';
+  btn.disabled = true;
+
+  var filesCtxData = filesCtx();
+  var k = KEY || localStorage.getItem('tk');
+  if (!k) {
+    notif('Clé API non configurée — allez dans Paramètres', 'wn');
+    btn.innerHTML = '⚡ Auto-remplir';
+    btn.disabled = false;
+    return;
+  }
+
+  var prompt = 'Tu es expert en marchés publics marocains. Analyse ces documents d\'appel d\'offres et extrais UNIQUEMENT les informations suivantes en JSON strict:
+' + filesCtxData + '
+
+Réponds UNIQUEMENT avec ce JSON (pas de texte autour):
+{
+  "titre": "intitulé complet de l'AO",
+  "moa": "nom du maître d'ouvrage",
+  "ref": "référence ou numéro de l'AO",
+  "type": "type d\'appel d\'offres (ouvert/restreint/bon de commande)",
+  "budget": "montant estimé en chiffres seulement ou vide si non mentionné",
+  "deadline": "date limite au format YYYY-MM-DD ou vide",
+  "secteur": "secteur d'activité principal",
+  "description": "résumé des principales exigences en 3-4 lignes"
+}';
+
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': k,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-5',
+      max_tokens: 800,
+      messages: [{ role: 'user', content: prompt }]
+    })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    btn.innerHTML = '⚡ Auto-remplir';
+    btn.disabled = false;
+    if (d.content && d.content[0]) {
+      try {
+        var txt = d.content[0].text.trim();
+        // Extract JSON even if wrapped in markdown
+        var jsonMatch = txt.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          var data = JSON.parse(jsonMatch[0]);
+          // Fill the form fields
+          if (data.titre) document.getElementById('ao-t').value = data.titre;
+          if (data.moa) document.getElementById('ao-m').value = data.moa;
+          if (data.ref) document.getElementById('ao-r').value = data.ref;
+          if (data.budget) document.getElementById('ao-b').value = data.budget.replace(/[^0-9]/g,'');
+          if (data.deadline) document.getElementById('ao-d').value = data.deadline;
+          if (data.description) document.getElementById('ao-tx').value = data.description;
+          // Set type select
+          if (data.type) {
+            var typeEl = document.getElementById('ao-ty');
+            var typeVal = data.type.toLowerCase();
+            if (typeVal.includes('restreint')) typeEl.value = 'AO restreint';
+            else if (typeVal.includes('commande')) typeEl.value = 'Bon de commande';
+            else if (typeVal.includes('priv')) typeEl.value = 'AO privé';
+            else if (typeVal.includes('concours')) typeEl.value = 'Concours';
+            else typeEl.value = 'AO ouvert';
+          }
+          // Set secteur select
+          if (data.secteur) {
+            var secEl = document.getElementById('ao-s');
+            var secVal = data.secteur.toLowerCase();
+            if (secVal.includes('btp') || secVal.includes('trav') || secVal.includes('const')) secEl.value = 'BTP & Travaux publics';
+            else if (secVal.includes('info') || secVal.includes('digit') || secVal.includes('syst')) secEl.value = 'Informatique';
+            else if (secVal.includes('four') || secVal.includes('equip')) secEl.value = 'Fournitures';
+            else if (secVal.includes('form')) secEl.value = 'Formation';
+            else if (secVal.includes('sant') || secVal.includes('medi')) secEl.value = 'Santé';
+            else if (secVal.includes('energ')) secEl.value = 'Énergie';
+            else secEl.value = 'Services';
+          }
+          notif('✅ Champs remplis automatiquement depuis vos documents !', 'ok');
+        }
+      } catch(ex) {
+        notif('Extraction partielle — vérifiez les champs', 'wn');
+      }
+    }
+  }).catch(function(e) {
+    btn.innerHTML = '⚡ Auto-remplir';
+    btn.disabled = false;
+    notif('Erreur: ' + e.message, 'er');
+  });
+}
+
+
+// ── AO ACTIF ──
+var AO_ACTIF = JSON.parse(localStorage.getItem('tai_ao_actif') || 'null');
+
+function setAOActif(ao) {
+  AO_ACTIF = ao;
+  localStorage.setItem('tai_ao_actif', JSON.stringify(ao));
+  showAOActifBanner();
+}
+
+function clearAOActif() {
+  AO_ACTIF = null;
+  localStorage.removeItem('tai_ao_actif');
+  document.getElementById('ao-actif-banner').style.display = 'none';
+}
+
+function showAOActifBanner() {
+  if (!AO_ACTIF) return;
+  var banner = document.getElementById('ao-actif-banner');
+  var titre = document.getElementById('ao-actif-titre');
+  if (banner && titre) {
+    banner.style.display = 'flex';
+    titre.textContent = AO_ACTIF.titre || 'AO en cours';
+  }
+}
+
+function getAOContext() {
+  var ao = AO_ACTIF || JSON.parse(localStorage.getItem('tai_ao_actif') || 'null');
+  if (!ao) return '';
+  return 'AO ACTIF — CONTEXTE DU MARCHÉ:\n' +
+    '- Intitulé: ' + (ao.titre || 'N/A') + '\n' +
+    '- Maître d\'ouvrage: ' + (ao.moa || 'N/A') + '\n' +
+    '- Référence: ' + (ao.ref || 'N/A') + '\n' +
+    '- Type: ' + (ao.type || 'N/A') + '\n' +
+    '- Budget: ' + (ao.budget ? ao.budget + ' MAD' : 'N/A') + '\n' +
+    '- Secteur: ' + (ao.secteur || 'N/A') + '\n' +
+    '- Date limite: ' + (ao.deadline || 'N/A') + '\n' +
+    '- Description: ' + (ao.description || 'N/A') + '\n' +
+    (ao.analyse ? '- Analyse IA résumée: ' + ao.analyse.slice(0,500) + '...\n' : '') +
+    '\nTu dois générer ce document SPÉCIFIQUEMENT pour cet AO.\n\n';
+}
+
+// Show banner on load if AO actif exists
+if (AO_ACTIF) showAOActifBanner();
+
+renderPipe();
+  loadTpls();
+}
+function renderPipe() {
+  if (!PIPE.length) return;
+  var html = PIPE.map(function(a) {
+    var amt = a.budget !== '—' ? parseInt((a.budget+'').replace(/\D/g,''),10).toLocaleString('fr-MA') + ' MAD' : '— MAD';
+    return '<div class="pi"><div class="pd"></div><div class="pn"><div class="pname">' + a.titre + '</div><div class="pm">' + a.moa + ' · ' + a.date + '</div></div><div class="pr"><div class="pa">' + amt + '</div><span class="bdg bg3">En cours</span></div></div>';
+  }).join('');
+  ['dash-pipe','pipe-b'].forEach(function(id) { var e = document.getElementById(id); if(e) e.innerHTML = html; });
+}
+
+// GENERATE FUNCTIONS
+function genTech() {
+  var o = document.getElementById('te-o').value.trim();
+  if (!o) { notif('Renseignez l\'objet', 'wn'); return; }
+  var btn = document.getElementById('btn-te');
+  btn.innerHTML = '<div class="ld"></div> Génération...';
+  btn.disabled = true;
+  var brand = getBrand();
+  var tplTech = getTpl('tpl-tech');
+  var aoCtx = getAOContext();
+  callAI('Expert mémoires techniques marchés publics marocains. Utilise EXACTEMENT ce modèle de structure comme base et adapte-le:\n\nMODÈLE DE RÉFÉRENCE:\n' + tplTech + '\n\n' + aoCtx + '\nPARAMÈTRES DU MARCHÉ:\nENTREPRISE: ' + brand.nom + '\nMARCHÉ: ' + o + '\nDÉLAI: ' + (document.getElementById('te-d').value||'N/A') + '\nTYPE: ' + document.getElementById('te-t').value + '\nSPÉCIFICITÉS: ' + (document.getElementById('te-s').value||'Standard') + '\nATOUTS: ' + (document.getElementById('te-a').value||'À valoriser') + '\n\nStructure: 1.PRÉSENTATION ENTREPRISE 2.COMPRÉHENSION PROJET 3.MÉTHODOLOGIE 4.PLAN QUALITÉ 5.HSE 6.GESTION RISQUES 7.VALEUR AJOUTÉE. Français formel marchés publics.',
+    document.getElementById('te-o2'), function() {
+      notif('Mémoire généré !', 'ok');
+      btn.innerHTML = '🤖 Générer le mémoire technique';
+      btn.disabled = false;
+    });
+}
+function genCV() {
+  var n = document.getElementById('cv-n').value.trim();
+  if (!n) { notif('Renseignez le nom', 'wn'); return; }
+  var tplCV = getTpl('tpl-cv');
+  callAI('Génère un CV normalisé AO marocain en suivant EXACTEMENT ce modèle de structure:\n\nMODÈLE:\n' + tplCV + '\n\nINFORMATIONS À INTÉGRER:\nNom:' + n + ' Poste:' + document.getElementById('cv-p').value + ' Diplôme:' + document.getElementById('cv-d').value + ' Exp:' + document.getElementById('cv-e').value + ' Réalisations:' + document.getElementById('cv-x').value + '. Format standard AO: formation, expériences, compétences, projets similaires. Formel.',
+    document.getElementById('cv-o'), function() { notif('CV généré !', 'ok'); });
+}
+function genPlan() {
+  var d = document.getElementById('pl-d').value.trim();
+  if (!d) { notif('Renseignez la durée', 'wn'); return; }
+  var tplPlan = getTpl('tpl-plan');
+  callAI('Génère un planning d\'exécution AO en suivant ce modèle:\n\nMODÈLE PLANNING:\n' + tplPlan + '\n\nPARAMÈTRES:\nDurée: ' + d + ' en ' + document.getElementById('pl-u').value + '. Tâches: ' + (document.getElementById('pl-t').value||'Phases standard BTP') + '. Diagramme Gantt ASCII avec colonnes tâches+périodes, jalons, chemin critique. Format dossier AO.',
+    document.getElementById('pl-o'), function() { notif('Planning généré !', 'ok'); });
+}
+function genRef() {
+  var r = document.getElementById('re-i').value.trim();
+  if (!r) { notif('Renseignez les références', 'wn'); return; }
+  var tplRef = getTpl('tpl-ref');
+  callAI('Formate ces références en suivant ce modèle de tableau:\n\nMODÈLE RÉFÉRENCES:\n' + tplRef + '\n\nRÉFÉRENCES À FORMATER: ' + r + '. Tableau: N°, Intitulé, MOA, Année, Montant MAD, Description, Statut(Réceptionné). Professionnel.',
+    document.getElementById('re-o'), function() { notif('Références formatées !', 'ok'); });
+}
+function genMoy() {
+  var m = document.getElementById('mo-i').value.trim();
+  if (!m) { notif('Listez les équipements', 'wn'); return; }
+  callAI('Tableau moyens matériels AO marocain: ' + m + '. Colonnes: N°, Désignation, Caractéristiques, Quantité, Propriété/Location, État. Section moyens humains standard.',
+    document.getElementById('mo-o'), function() { notif('Tableau généré !', 'ok'); });
+}
+function genFin() {
+  var o = document.getElementById('fi-o').value.trim();
+  if (!o) { notif('Renseignez l\'objet', 'wn'); return; }
+  var tva = document.getElementById('fi-t').value;
+  var tplFin = getTpl('tpl-fin');
+  var aoCtxF = getAOContext();
+  callAI('Expert offres financières marchés publics marocains. Utilise ce modèle de structure:\n\nMODÈLE BPU/DQE/ACTE:\n' + tplFin + '\n\n' + aoCtxF + '\nPARAMÈTRES:\nMARCHÉ: ' + o + '\nBUDGET: ' + (document.getElementById('fi-b').value||'N/A') + ' MAD HT\nTVA: ' + tva + '% MARGE: ' + document.getElementById('fi-m').value + '% STRATÉGIE: ' + document.getElementById('fi-s').value + '\nPOSTES: ' + (document.getElementById('fi-p').value||'Main d\'oeuvre, Matériaux, Transport, Frais généraux') + '\n\n1.BPU tableau ASCII 2.DQE quantités×prix=montants 3.RÉCAP total HT+TVA+TTC 4.ACTE ENGAGEMENT formel 75 jours. Montants réalistes marché marocain.',
+    document.getElementById('fi-o2'), function() { notif('Offre financière générée !', 'ok'); });
+}
+function genAdmin() {
+  var tplAdmin = getTpl('tpl-admin');
+  var aoCtxA = getAOContext();
+  callAI('Expert marchés publics marocains. Utilise ce modèle de checklist et adapte-le:\n\nMODÈLE CHECKLIST:\n' + tplAdmin + '\n\n' + aoCtxA + '\nPARAMÈTRES:\nTYPE: ' + document.getElementById('ad-s').value + '\nMARCHÉ: ' + document.getElementById('ad-m').value + '\nMONTANT: ' + (document.getElementById('ad-mo').value||'N/A') + ' MAD\nINFO: ' + (document.getElementById('ad-i').value||'Standard') + '\nListe toutes les pièces avec: nom exact, validité, où l\'obtenir. Format checklist claire.',
+    document.getElementById('ad-o'), function() { notif('Checklist générée !', 'ok'); });
+}
+
+// MODAL LIVRABLES
+function openLiv(type) {
+  curDoc = type.replace(/[^a-zA-Z0-9]/g, '-');
+  document.getElementById('mod-t').textContent = '📄 ' + type;
+  document.getElementById('modal').classList.add('on');
+  var out = document.getElementById('mod-o');
+  out.textContent = '';
+  var p = 0;
+  var iv = setInterval(function() { p = Math.min(p+2, 85); document.getElementById('pb').style.width = p + '%'; }, 80);
+  var b = getBrand();
+  var aoCtxL = getAOContext();
+  callAI(aoCtxL + 'Génère "' + type + '" pour dossier AO marocain. Entreprise: ' + b.nom + (b.slog ? '. Slogan: ' + b.slog : '') + '. Document complet, professionnel, placeholders [entre crochets] pour les infos manquantes. Conforme marchés publics marocains Décret 2-12-349.',
+    out, function() {
+      clearInterval(iv);
+      document.getElementById('pb').style.width = '100%';
+      notif(type + ' généré !', 'ok');
+    });
+}
+function closeMod() { document.getElementById('modal').classList.remove('on'); }
+
+// TÉLÉCHARGEMENTS
+function dlPDF(srcId, nom) {
+  var txt = document.getElementById(srcId) ? document.getElementById(srcId).textContent : '';
+  if (!txt || txt.length < 10) { notif('Générez d\'abord le document !', 'wn'); return; }
+  var b = getBrand();
+  var date = new Date().toLocaleDateString('fr-MA');
+  var ao = AO_ACTIF || {};
+  var fn = (nom||'document').replace(/[^a-zA-Z0-9_-]/g,'_').toLowerCase();
+  var colorP = b.colorP || '#0D3B6E';
+  var colorA = b.colorA || '#C8922A';
+  var lines = txt.split('\n');
+  var body = '';
+  lines.forEach(function(line) {
+    var l = line.trim();
+    if (!l) { body += '<div style="height:5px"></div>'; return; }
+    if (l.match(/^[A-Z][A-Z\s&\/\-]{7,}$/) || l.match(/^\d+\.\s+[A-Z]/)) {
+      body += '<div style="display:flex;align-items:center;gap:8px;margin:18px 0 7px;page-break-inside:avoid"><div style="width:4px;height:18px;background:' + colorA + ';border-radius:2px;flex-shrink:0"></div><div style="font-size:12pt;font-weight:700;color:' + colorP + ';text-transform:uppercase;letter-spacing:.5px">' + l + '</div></div>';
+    } else if (l.match(/^[-•►☐✅]\s/)) {
+      body += '<div style="padding:3px 0 3px 16px;position:relative"><span style="position:absolute;left:0;color:' + colorA + ';font-weight:700">›</span>' + l.slice(2) + '</div>';
+    } else if (l.match(/^[|N].*[|]/) || l.match(/^---/)) {
+      body += '<div style="font-family:Courier New,monospace;font-size:9pt;background:#f5f5f5;padding:3px 8px;border-bottom:1px solid #ddd;white-space:pre-wrap">' + l + '</div>';
+    } else {
+      body += '<p style="margin:3px 0;text-align:justify">' + l + '</p>';
+    }
+  });
+  var aoband = ao.titre ? '<div style="background:#f8f9fa;border-left:4px solid ' + colorA + ';padding:9px 14px;margin-bottom:18px;font-size:9pt"><strong style="color:' + colorP + '">AO :</strong> ' + ao.titre + ' &nbsp;|&nbsp; <strong style="color:' + colorP + '">MOA :</strong> ' + (ao.moa||'—') + (ao.budget ? ' &nbsp;|&nbsp; <strong style="color:' + colorP + '">Budget :</strong> ' + parseInt(ao.budget||0).toLocaleString('fr-MA') + ' MAD HT' : '') + '</div>' : '';
+  var initials = (b.nom||'AO').split(' ').map(function(w){return w[0]||'';}).join('').slice(0,3).toUpperCase();
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + nom + '</title>' +
+    '<style>@page{margin:1.5cm 2cm}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Segoe UI,Arial,sans-serif;font-size:10.5pt;color:#1a1a2e;line-height:1.7}@media print{.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style>' +
+    '</head><body>' +
+    '<div style="background:linear-gradient(135deg,' + colorP + ' 0%,' + colorP + 'cc 70%,#1a1a2e 100%);color:#fff;padding:36px;margin-bottom:0">' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start">' +
+        '<div style="background:' + colorA + ';padding:7px 13px;border-radius:6px;font-size:13pt;font-weight:700;letter-spacing:1px">' + initials + '</div>' +
+        '<div style="font-size:9pt;opacity:.8;text-align:right"><div>' + (b.nom||'Mon Entreprise') + '</div><div>' + date + '</div><div>Confidentiel</div></div>' +
+      '</div>' +
+      '<div style="margin-top:20px">' +
+        '<div style="background:rgba(255,255,255,.15);display:inline-block;padding:4px 10px;border-radius:20px;font-size:9pt;margin-bottom:10px">Dossier Appel d'Offres — TenderAI Maroc</div>' +
+        '<div style="font-size:17pt;font-weight:700;line-height:1.3;margin-bottom:5px">' + nom + '</div>' +
+        '<div style="font-size:10pt;opacity:.85">' + (ao.titre||'Marché en cours de préparation') + '</div>' +
+      '</div>' +
+      '<div style="height:4px;background:' + colorA + ';border-radius:2px;margin-top:16px"></div>' +
+    '</div>' +
+    aoband +
+    '<div style="padding:0 0 20px">' + body + '</div>' +
+    '<div style="border-top:2px solid ' + colorP + ';padding:10px 0 0;margin-top:28px;display:flex;justify-content:space-between">' +
+      '<div style="font-size:8.5pt;color:#666"><div>' + (b.nom||'') + '</div><div>' + (b.email||'') + '</div><div style="height:3px;width:50px;background:' + colorA + ';border-radius:2px;margin-top:4px"></div></div>' +
+      '<div style="font-size:8.5pt;color:#666;text-align:right"><div>Généré par TenderAI Maroc</div><div>' + date + '</div></div>' +
+    '</div>' +
+    '<script>window.onload=function(){window.print();}<\/script>' +
+    '</body></html>';
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = fn + '_PRO.html';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  notif('📄 PDF professionnel téléchargé — s\'imprime automatiquement !', 'ok');
+}
+function dlExcel(srcId, nom, type) {
+  var txt = document.getElementById(srcId) ? document.getElementById(srcId).textContent : '';
+  if (!txt || txt.length < 10) { notif('Générez d\'abord le document !', 'wn'); return; }
+  var b = getBrand();
+  var ao = AO_ACTIF || {};
+  var date = new Date().toLocaleDateString('fr-MA');
+  var fn = (nom||'doc').replace(/[^a-zA-Z0-9_-]/g,'_').toLowerCase();
+  var lines = txt.split('\n').filter(function(l){return l.trim().length > 2;});
+  var rows = '';
+  var headers = '';
+  if (type === 'check') {
+    headers = 'N°\tPIÈCE / DOCUMENT REQUIS\tOBLIGATOIRE\tVALIDITÉ\tOÙ L\'OBTENIR\tOBTENU (O/N)\tDATE OBTENTION\tOBSERVATIONS\n';
+    var n = 1;
+    lines.forEach(function(l) {
+      var c = l.replace(/[•✅❌⚠️✓◆►☐-]/g,'').trim();
+      if (c.length > 5) rows += n++ + '\t' + c + '\tOui\tEn cours de validité\tOrganisme compétent\t\t\t\n';
+    });
+  } else if (type === 'gantt') {
+    // Build professional dynamic Gantt as HTML that opens in Excel
+    var tasks = [];
+    lines.forEach(function(l) {
+      var c = l.replace(/[|+=█-]/g,' ').replace(/\s+/g,' ').trim();
+      if (c.length > 5 && !c.match(/^[\s=]+$/)) tasks.push(c);
+    });
+    var numWeeks = 12;
+    var weekHeaders = '';
+    for (var w = 1; w <= numWeeks; w++) weekHeaders += '<th style="background:#0D3B6E;color:#fff;font-size:9pt;padding:5px 3px;min-width:28px;text-align:center;border:1px solid #0a2d54">S' + w + '</th>';
+
+    var taskRows = '';
+    tasks.forEach(function(task, i) {
+      var startW = Math.max(1, Math.round(i * numWeeks / tasks.length) + 1);
+      var dur = Math.max(1, Math.round(numWeeks / tasks.length));
+      var endW = Math.min(numWeeks, startW + dur - 1);
+      var cells = '';
+      for (var w = 1; w <= numWeeks; w++) {
+        if (w >= startW && w <= endW) {
+          cells += '<td style="background:#0D3B6E;border:1px solid #0a2d54" title="Semaine ' + w + '"></td>';
+        } else {
+          cells += '<td style="background:#EEF4FB;border:1px solid #dde4f0"></td>';
+        }
+      }
+      var bg = i % 2 === 0 ? '#fff' : '#F0F4FA';
+      taskRows += '<tr style="background:' + bg + '">' +
+        '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;font-weight:600;text-align:center;color:#0D3B6E">' + (i+1) + '</td>' +
+        '<td style="border:1px solid #dde;padding:5px 10px;font-size:9.5pt;font-weight:500;min-width:200px">' + task + '</td>' +
+        '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;color:#4A5568;background:#FFFDE7">Équipe projet</td>' +
+        '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;text-align:center;background:#FFFDE7">' + startW + '</td>' +
+        '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;text-align:center;background:#FFFDE7">' + endW + '</td>' +
+        '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;text-align:center">' + (endW-startW+1) + ' sem.</td>' +
+        cells +
+        '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;text-align:center;background:#FFFDE7">0%</td>' +
+        '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;background:#FFFDE7;color:#0F6E56;font-weight:500">Planifié</td>' +
+        '</tr>';
+    });
+
+    // Add milestone row
+    taskRows += '<tr style="background:#FEF3CD"><td colspan="6" style="border:1px solid #C8922A;padding:5px 10px;font-size:9pt;font-weight:700;color:#C8922A">★ JALONS IMPORTANTS</td>' + Array(numWeeks).fill('<td style="background:#FEF3CD;border:1px solid #C8922A"></td>').join('') + '<td colspan="2" style="border:1px solid #C8922A;background:#FEF3CD"></td></tr>';
+
+    var ao2 = AO_ACTIF || {};
+    var htmlGantt = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Planning Gantt — ' + (b.nom||'') + '</title>' +
+    '<style>body{font-family:Calibri,Arial,sans-serif;margin:0;padding:15px;font-size:10pt}' +
+    '.header{background:linear-gradient(135deg,#0D3B6E,#1557A0);color:#fff;padding:20px 24px;border-radius:8px;margin-bottom:16px}' +
+    '.header h1{font-size:16pt;margin:0 0 4px}.header p{font-size:9pt;opacity:.85;margin:2px 0}' +
+    '.ao-band{background:#f8f9fa;border-left:4px solid #C8922A;padding:8px 14px;margin-bottom:14px;font-size:9pt}' +
+    '.legend{display:flex;gap:16px;margin-bottom:12px;font-size:9pt;align-items:center}' +
+    '.leg-box{width:16px;height:16px;border-radius:3px;flex-shrink:0}' +
+    'table{border-collapse:collapse;width:100%}' +
+    'th{background:#0D3B6E;color:#fff;padding:7px 8px;font-size:9.5pt;text-align:left;border:1px solid #0a2d54}' +
+    '.params{background:#EEF4FB;border:1px solid #0D3B6E;border-radius:6px;padding:12px 16px;margin-bottom:14px}' +
+    '.params h3{font-size:10pt;color:#0D3B6E;margin:0 0 8px}' +
+    '.params-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}' +
+    '.param-box{background:#fff;border:1px solid #ccd;border-radius:4px;padding:7px 10px}' +
+    '.param-label{font-size:8pt;color:#666;margin-bottom:2px}' +
+    '.param-val{font-size:10pt;font-weight:600;color:#0D3B6E}' +
+    '.footer{margin-top:16px;border-top:2px solid #0D3B6E;padding-top:8px;display:flex;justify-content:space-between;font-size:8pt;color:#666}' +
+    '@media print{body{margin:0}.header{-webkit-print-color-adjust:exact;print-color-adjust:exact}th{-webkit-print-color-adjust:exact;print-color-adjust:exact}td[style*="background:#0D3B6E"]{-webkit-print-color-adjust:exact;print-color-adjust:exact}}' +
+    '</style></head><body>' +
+    '<div class="header"><h1>📅 Planning d'Exécution — Diagramme de Gantt</h1>' +
+    '<p>' + (b.nom||'Mon Entreprise') + ' &nbsp;|&nbsp; ' + (ao2.titre||'Marché en cours') + ' &nbsp;|&nbsp; Généré le ' + new Date().toLocaleDateString('fr-MA') + '</p></div>' +
+    (ao2.titre ? '<div class="ao-band"><strong>AO :</strong> ' + ao2.titre + ' &nbsp;|&nbsp; <strong>MOA :</strong> ' + (ao2.moa||'—') + (ao2.budget ? ' &nbsp;|&nbsp; <strong>Budget :</strong> ' + parseInt(ao2.budget||0).toLocaleString('fr-MA') + ' MAD HT' : '') + '</div>' : '') +
+    '<div class="params"><h3>⚙️ Paramètres du planning (modifiables)</h3><div class="params-grid">' +
+    '<div class="param-box"><div class="param-label">Date de démarrage (OS)</div><div class="param-val" contenteditable="true" style="border-bottom:1px dashed #0D3B6E">' + new Date().toLocaleDateString('fr-MA') + '</div></div>' +
+    '<div class="param-box"><div class="param-label">Durée totale</div><div class="param-val" contenteditable="true" style="border-bottom:1px dashed #0D3B6E">' + tasks.length * 2 + ' semaines</div></div>' +
+    '<div class="param-box"><div class="param-label">Nombre de tâches</div><div class="param-val">' + tasks.length + ' tâches</div></div>' +
+    '<div class="param-box"><div class="param-label">Date de fin prévisionnelle</div><div class="param-val" contenteditable="true" style="border-bottom:1px dashed #0D3B6E">S' + numWeeks + '</div></div>' +
+    '</div></div>' +
+    '<div class="legend"><div class="leg-box" style="background:#0D3B6E"></div><span>Période d\'exécution</span>' +
+    '<div class="leg-box" style="background:#EEF4FB;border:1px solid #ccd"></div><span>Période inactive</span>' +
+    '<div class="leg-box" style="background:#FEF3CD;border:1px solid #C8922A"></div><span>Jalons / Livrables</span>' +
+    '<div class="leg-box" style="background:#FFFDE7;border:1px solid #ddd"></div><span>Champs modifiables</span></div>' +
+    '<table><thead><tr>' +
+    '<th style="min-width:35px">N°</th>' +
+    '<th style="min-width:200px">TÂCHE / PHASE</th>' +
+    '<th style="min-width:100px">RESPONSABLE</th>' +
+    '<th>DÉB.</th><th>FIN</th><th>DURÉE</th>' +
+    weekHeaders +
+    '<th>AVANC.</th><th>STATUT</th>' +
+    '</tr></thead><tbody>' + taskRows + '</tbody></table>' +
+    '<div class="footer"><span>' + (b.nom||'Mon Entreprise') + ' — TenderAI Maroc</span><span>Les cellules jaunes sont modifiables directement dans ce fichier</span><span>' + new Date().toLocaleDateString('fr-MA') + '</span></div>' +
+    '<script>document.querySelectorAll("td[contenteditable]").forEach(function(el){el.style.background="#FFFDE7";el.style.cursor="text";});<\/script>' +
+    '</body></html>';
+
+    var blob = new Blob([htmlGantt], {type:'text/html;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = fn + '_Gantt_PRO.html';
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+    notif('📊 Planning Gantt professionnel téléchargé ! Ouvrez dans Excel ou navigateur.', 'ok');
+    return;
+  } else if (type === 'bpu') {
+    headers = 'N°\tDÉSIGNATION\tUNITÉ\tQUANTITÉ\tPRIX UNIT. HT (MAD)\tMONTANT HT (MAD)\tTVA %\tMONTANT TTC (MAD)\n';
+    var n3 = 1;
+    lines.forEach(function(l) {
+      var c = l.trim();
+      if (c.length > 5) rows += n3++ + '\t' + c + '\tU\t1\t0\t0\t20\t0\n';
+    });
+    rows += '\tTOTAL GÉNÉRAL HT\t\t\t\t0\t\t0\n';
+  } else if (type === 'ref') {
+    headers = 'N°\tINTITULÉ MARCHÉ\tMAÎTRE D\'OUVRAGE\tANNÉE\tMONTANT (MAD)\tDESCRIPTION\tSTATUT\tCONTACT\n';
+    var n4 = 1;
+    lines.forEach(function(l) {
+      var c = l.replace(/^\d+[).]?/,'').trim();
+      if (c.length > 5) rows += n4++ + '\t' + c + '\t\t\t\t\tRéceptionné\t\n';
+    });
+  } else if (type === 'moy') {
+    headers = 'N°\tDÉSIGNATION\tCARACTÉRISTIQUES TECHNIQUES\tQUANTITÉ\tPROPRIÉTÉ / LOCATION\tÉTAT\tANNÉE ACQUISITION\tOBSERVATIONS\n';
+    var n5 = 1;
+    lines.forEach(function(l) {
+      var c = l.trim();
+      if (c.length > 5) rows += n5++ + '\t' + c + '\t\t1\tPropriété\tBon état\t\t\n';
+    });
+  } else {
+    headers = 'N°\tDÉSIGNATION\tDÉTAIL\tQUANTITÉ\tMONTANT (MAD)\tREMARQUES\n';
+    var n6 = 1;
+    lines.forEach(function(l) {
+      if (l.trim().length > 5) rows += n6++ + '\t' + l.trim() + '\t\t\t0\t\n';
+    });
+  }
+  var tsv = (b.nom||'Mon Entreprise') + ' — ' + nom + '\n' +
+    'AO: ' + (ao.titre||'—') + ' | MOA: ' + (ao.moa||'—') + ' | Date: ' + date + ' | TenderAI Maroc\n\n' +
+    headers + rows;
+  var blob = new Blob(['\uFEFF' + tsv], {type:'text/tab-separated-values;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = fn + '_PRO.tsv';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  notif('📊 Excel professionnel téléchargé ! Ouvrez avec Excel ou Google Sheets', 'ok');
+}
+function getBrand() {
+  var saved = JSON.parse(localStorage.getItem('tbrand') || '{}');
+  return {
+    nom: (document.getElementById('br-n') ? document.getElementById('br-n').value : '') || saved.nom || 'Mon Entreprise',
+    slog: (document.getElementById('br-s') ? document.getElementById('br-s').value : '') || saved.slog || '',
+    email: (document.getElementById('br-e') ? document.getElementById('br-e').value : '') || saved.email || '',
+    colorP: CP2 || '#0D3B6E',
+    colorA: CA2 || '#C8922A'
+  };
+}
+function updPrev() {
+  var n = document.getElementById('br-n') ? document.getElementById('br-n').value || 'Mon Entreprise' : 'Mon Entreprise';
+  var s = document.getElementById('br-s') ? document.getElementById('br-s').value || 'Votre slogan' : 'Votre slogan';
+  var e = document.getElementById('br-e') ? document.getElementById('br-e').value || 'contact@entreprise.ma' : 'contact@entreprise.ma';
+  document.getElementById('prn').textContent = n;
+  document.getElementById('prs').textContent = s;
+  document.getElementById('prc').textContent = n;
+  document.getElementById('prf').textContent = n + ' — ' + e;
+  var pl = document.getElementById('prl');
+  if (!pl.querySelector('img')) {
+    pl.textContent = n.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase() || 'M';
+  }
+}
+function setCP(hex) {
+  CP2=hex; document.getElementById('hcp').textContent=hex; document.getElementById('icp').value=hex;
+  document.getElementById('prb').style.background=hex; document.getElementById('prl').style.background=hex; document.getElementById('prfb').style.background=hex;
+}
+function setCA(hex) {
+  CA2=hex; document.getElementById('hca').textContent=hex; document.getElementById('ica').value=hex; document.getElementById('prba').style.background=hex;
+}
+function upLogo(e) {
+  var f=e.target.files[0]; if(!f) return;
+  var r=new FileReader();
+  r.onload=function(ev){
+    document.getElementById('lp').innerHTML='<img src="'+ev.target.result+'" style="max-height:45px;max-width:100%;object-fit:contain">';
+    document.getElementById('prl').innerHTML='<img src="'+ev.target.result+'" style="max-height:22px;max-width:22px;object-fit:contain">';
+    notif('Logo uploadé !','ok');
+  };
+  r.readAsDataURL(f);
+}
+function saveBrand() {
+  var d={nom:document.getElementById('br-n').value,slog:document.getElementById('br-s').value,email:document.getElementById('br-e').value};
+  localStorage.setItem('tbrand',JSON.stringify(d)); localStorage.setItem('tb',d.nom);
+  notif('Charte sauvegardée !','ok');
+}
+function saveKey() {
+  var k=document.getElementById('ak').value.trim();
+  if(!k.startsWith('sk-')){notif('Clé invalide — doit commencer par sk-','wn');return;}
+  localStorage.setItem('tk',k); KEY=k;
+  document.getElementById('ks').innerHTML='<span style="color:#0F6E56;font-size:11px">✅ Clé sauvegardée et active !</span>';
+  notif('Clé API configurée !','ok');
+}
+function saveProfil() {
+  var n=document.getElementById('se-n').value;
+  if(n){document.getElementById('un').textContent=n;document.getElementById('ua').textContent=n[0].toUpperCase();}
+  notif('Profil sauvegardé !','ok');
+}
+function cp(id) {
+  var t=document.getElementById(id)?document.getElementById(id).textContent:'';
+  if(t&&navigator.clipboard) navigator.clipboard.writeText(t).then(function(){notif('Copié !','ok');});
+}
+function notif(msg,type) {
+  var n=document.getElementById('nt');
+  n.textContent=msg; n.className='nt '+(type||''); n.classList.add('on');
+  setTimeout(function(){n.classList.remove('on');},3500);
+}
+
+// ── MODELES ──
+
+function swm(id, el) {
+  document.querySelectorAll('#pg-modeles .tc').forEach(function(t){t.classList.remove('on');});
+  el.parentElement.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+}
+
+function loadModeles() {
+  Object.keys(DEFAULT_TPLS).forEach(function(k) {
+    var saved = localStorage.getItem('tai_' + k);
+    var el = document.getElementById(k);
+    if (el) el.value = saved || DEFAULT_TPLS[k];
+  });
+}
+
+function saveMod(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    localStorage.setItem('tai_' + id, el.value);
+    notif('Modèle sauvegardé !', 'ok');
+  }
+}
+
+function resetMod(id) {
+  var el = document.getElementById(id);
+  if (el && DEFAULT_TPLS[id]) {
+    el.value = DEFAULT_TPLS[id];
+    localStorage.removeItem('tai_' + id);
+    notif('Modèle réinitialisé au défaut !', 'ok');
+  }
+}
+
+function getTpl(id) {
+  return localStorage.getItem('tai_' + id) || DEFAULT_TPLS[id] || '';
+}
+
+// Init modeles on load
+loadModeles();
+
+
+// ── IMPORT MODELES ENTREPRISE ──
+function importModele(e, type) {
+  var f = e.target.files[0];
+  if (!f) return;
+  var nameEl = document.getElementById('imp-' + type + '-name');
+  var tplEl = document.getElementById('tpl-' + type);
+  var r = new FileReader();
+  r.onload = function(ev) {
+    var content = ev.target.result;
+    // Save imported content as template
+    localStorage.setItem('tai_tpl-' + type, content);
+    if (tplEl) tplEl.value = content;
+    if (nameEl) nameEl.textContent = '✅ ' + f.name;
+    notif('Modèle "' + f.name + '" importé avec succès !', 'ok');
+  };
+  r.readAsText(f, 'UTF-8');
+}
+
+
+
+// ── AO ACTIF ──
+var AO_ACTIF = JSON.parse(localStorage.getItem('tai_ao_actif') || 'null');
+
+function setAOActif(ao) {
+  AO_ACTIF = ao;
+  localStorage.setItem('tai_ao_actif', JSON.stringify(ao));
+  showAOActifBanner();
+}
+
+
+function showAOActifBanner() {
+  if (!AO_ACTIF) return;
+  var banner = document.getElementById('ao-actif-banner');
+  var titre = document.getElementById('ao-actif-titre');
+  if (banner && titre) {
+    banner.style.display = 'flex';
+    titre.textContent = AO_ACTIF.titre || 'AO en cours';
+  }
+}
+
+function getAOContext() {
+  var ao = AO_ACTIF || JSON.parse(localStorage.getItem('tai_ao_actif') || 'null');
+  if (!ao) return '';
+  return 'AO ACTIF — CONTEXTE DU MARCHÉ:\n' +
+    '- Intitulé: ' + (ao.titre || 'N/A') + '\n' +
+    '- Maître d\'ouvrage: ' + (ao.moa || 'N/A') + '\n' +
+    '- Référence: ' + (ao.ref || 'N/A') + '\n' +
+    '- Type: ' + (ao.type || 'N/A') + '\n' +
+    '- Budget: ' + (ao.budget ? ao.budget + ' MAD' : 'N/A') + '\n' +
+    '- Secteur: ' + (ao.secteur || 'N/A') + '\n' +
+    '- Date limite: ' + (ao.deadline || 'N/A') + '\n' +
+    '- Description: ' + (ao.description || 'N/A') + '\n' +
+    (ao.analyse ? '- Analyse IA résumée: ' + ao.analyse.slice(0,500) + '...\n' : '') +
+    '\nTu dois générer ce document SPÉCIFIQUEMENT pour cet AO.\n\n';
+}
+
+// Show banner on load if AO actif exists
+if (AO_ACTIF) showAOActifBanner();
+
+renderPipe();
+  loadTpls();
+var sb=JSON.parse(localStorage.getItem('tbrand')||'{}');
+if(sb.nom){
+  var m={'n':'br-n','s':'br-s','e':'br-e'};
+  var p2={'n':'nom','s':'slog','e':'email'};
+  ['n','s','e'].forEach(function(k){var el=document.getElementById(m[k]);if(el&&sb[p2[k]])el.value=sb[p2[k]];});
+  updPrev();
+}
+
+function clearAO() {
+  AO = null;
+  localStorage.removeItem('tai_ao');
+  var bar = document.getElementById('ao-bar');
+  if (bar) bar.style.display = 'none';
+}
+
+function loadTpls() {
+  Object.keys(DEFAULT_TPLS).forEach(function(k) {
+    var el = document.getElementById(k);
+    if (el) el.value = localStorage.getItem('tai_' + k) || DEFAULT_TPLS[k];
+  });
+}
+
+function dlGantt() {
+  var start = document.getElementById('pl-start').value || new Date().toISOString().slice(0,10);
+  var dur = parseInt(document.getElementById('pl-dur').value) || 12;
+  var tachesRaw = document.getElementById('pl-t').value || 'Installation
+Travaux
+Controle qualite
+Reception';
+  var tasks = tachesRaw.split('
+').filter(function(l) { return l.trim().length > 2; });
+  var ao2 = AO || {};
+  var b = getBrand();
+  var numW = Math.max(dur, tasks.length + 2);
+  var dateStart = new Date(start);
+
+  var weekHeaders = '';
+  for (var w = 1; w <= numW; w++) {
+    var d2 = new Date(dateStart.getTime() + (w-1)*7*24*3600*1000);
+    weekHeaders += '<th style="background:#0D3B6E;color:#fff;font-size:8pt;padding:4px 2px;min-width:28px;text-align:center;border:1px solid #0a2d54">S' + w + '<br><span style="font-weight:400;opacity:.7;font-size:7pt">' + d2.toLocaleDateString('fr-MA',{day:'2-digit',month:'2-digit'}) + '</span></th>';
+  }
+
+  var taskRows = '';
+  tasks.forEach(function(task, i) {
+    var startW = Math.max(1, Math.round(i * (numW-2) / tasks.length) + 1);
+    var taskDur = Math.max(1, Math.round((numW-2) / tasks.length));
+    var endW = Math.min(numW, startW + taskDur - 1);
+    var cells = '';
+    for (var w = 1; w <= numW; w++) {
+      if (w >= startW && w <= endW) {
+        cells += '<td style="background:#0D3B6E;border:1px solid #fff;text-align:center;color:#fff;font-size:10pt;-webkit-print-color-adjust:exact;print-color-adjust:exact">█</td>';
+      } else {
+        cells += '<td style="background:#EEF4FB;border:1px solid #dde4f0"></td>';
+      }
+    }
+    var bg = i % 2 === 0 ? '#fff' : '#F5F8FF';
+    taskRows += '<tr style="background:' + bg + '">' +
+      '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;font-weight:700;text-align:center;color:#0D3B6E">' + (i+1) + '</td>' +
+      '<td style="border:1px solid #dde;padding:5px 10px;font-size:9.5pt;font-weight:500;min-width:180px" contenteditable="true">' + task + '</td>' +
+      '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;background:#FFFDE7;min-width:90px" contenteditable="true">Equipe projet</td>' +
+      '<td style="border:1px solid #dde;padding:5px;font-size:9pt;text-align:center;background:#FFFDE7" contenteditable="true">' + startW + '</td>' +
+      '<td style="border:1px solid #dde;padding:5px;font-size:9pt;text-align:center;background:#FFFDE7" contenteditable="true">' + endW + '</td>' +
+      '<td style="border:1px solid #dde;padding:5px;font-size:9pt;text-align:center">' + (endW-startW+1) + ' sem.</td>' +
+      cells +
+      '<td style="border:1px solid #dde;padding:5px;font-size:9pt;text-align:center;background:#FFFDE7" contenteditable="true">0%</td>' +
+      '<td style="border:1px solid #dde;padding:5px 8px;font-size:9pt;background:#FFFDE7;color:#0F6E56;font-weight:500" contenteditable="true">Planifie</td>' +
+      '</tr>';
+  });
+
+  var dateEnd = new Date(dateStart.getTime() + numW*7*24*3600*1000);
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Planning Gantt</title>' +
+    '<style>*{box-sizing:border-box}body{font-family:Calibri,Arial,sans-serif;margin:0;padding:10px;font-size:10pt}' +
+    '.hdr{background:#0D3B6E;color:#fff;padding:14px 18px;border-radius:7px;margin-bottom:10px}' +
+    '.hdr h1{font-size:13pt;margin:0 0 3px}.hdr p{font-size:9pt;opacity:.8;margin:0}' +
+    '.ao-b{background:#f8f9fa;border-left:4px solid #C8922A;padding:7px 12px;margin-bottom:10px;font-size:9pt}' +
+    '.params{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}' +
+    '.param{background:#EEF4FB;border:1px solid #b0c4de;border-radius:5px;padding:6px 10px;flex:1;min-width:100px}' +
+    '.pl{font-size:8pt;color:#666;margin-bottom:2px}.pv{font-size:10pt;font-weight:700;color:#0D3B6E;outline:none}' +
+    '.legend{display:flex;gap:12px;margin-bottom:8px;font-size:9pt;align-items:center}' +
+    'table{border-collapse:collapse;width:100%}' +
+    'th{background:#0D3B6E;color:#fff;padding:5px 6px;font-size:9pt;text-align:left;border:1px solid #0a2d54;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '[contenteditable]:hover{background:rgba(200,146,42,.1)!important;cursor:text;outline:none}' +
+    '.foot{margin-top:10px;border-top:2px solid #0D3B6E;padding-top:7px;display:flex;justify-content:space-between;font-size:8pt;color:#666}' +
+    '@media print{.hdr{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>' +
+    '<div class="hdr"><h1>Planning Execution - Diagramme de Gantt</h1><p>' + b.nom + ' | ' + (ao2.titre||'Marche en cours') + ' | Genere le ' + new Date().toLocaleDateString('fr-MA') + '</p></div>' +
+    (ao2.titre ? '<div class="ao-b"><strong>AO :</strong> ' + ao2.titre + ' | <strong>MOA :</strong> ' + (ao2.moa||'-') + (ao2.budget ? ' | <strong>Budget :</strong> ' + parseInt(ao2.budget||0).toLocaleString('fr-MA') + ' MAD HT' : '') + '</div>' : '') +
+    '<div class="params">' +
+    '<div class="param"><div class="pl">Date demarrage</div><div class="pv" contenteditable="true">' + dateStart.toLocaleDateString('fr-MA') + '</div></div>' +
+    '<div class="param"><div class="pl">Duree totale</div><div class="pv" contenteditable="true">' + numW + ' semaines</div></div>' +
+    '<div class="param"><div class="pl">Nb taches</div><div class="pv">' + tasks.length + '</div></div>' +
+    '<div class="param"><div class="pl">Date fin</div><div class="pv" contenteditable="true">' + dateEnd.toLocaleDateString('fr-MA') + '</div></div>' +
+    '</div>' +
+    '<div class="legend"><div style="width:14px;height:14px;background:#0D3B6E;border-radius:2px"></div><span>Actif</span><div style="width:14px;height:14px;background:#EEF4FB;border:1px solid #ccd;border-radius:2px"></div><span>Inactif</span><div style="width:14px;height:14px;background:#FFFDE7;border:1px solid #ddd;border-radius:2px"></div><span>Modifiable</span></div>' +
+    '<div style="overflow-x:auto"><table><thead><tr>' +
+    '<th style="min-width:30px">N</th><th style="min-width:180px">TACHE / PHASE</th><th>RESPONSABLE</th><th>DEB</th><th>FIN</th><th>DUREE</th>' +
+    weekHeaders + '<th>AVANC</th><th>STATUT</th></tr></thead>' +
+    '<tbody>' + taskRows + '</tbody></table></div>' +
+    '<div class="foot"><span>' + b.nom + ' - TenderAI Maroc</span><span style="color:#C8922A">Cellules jaunes = modifiables</span><span>' + new Date().toLocaleDateString('fr-MA') + '</span></div>' +
+    '</body></html>';
+
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'Planning_Gantt_PRO.html';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  notif('Gantt telecharge ! Ouvrez dans Excel ou navigateur.', 'ok');
+}
+
+</script>
+</body>
+</html>
